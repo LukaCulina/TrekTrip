@@ -79,9 +79,6 @@ const Login = () => {
         <Helmet>
           <title>{t('sitenames.login')}</title>
         </Helmet>
-        <div className='logo-text'>
-          <p>TrekTrip</p>
-        </div>
         <form className="auth-form" onSubmit={handleSubmit}>
           <h1 className='auth-title'>{t('login.title')}</h1>
           <label>
@@ -115,7 +112,7 @@ const Login = () => {
           <div className='remember'>
             <label className="auth-checkbox">
               <input type="checkbox" name="rememberMe" checked={formData.rememberMe} onChange={handleChange} />
-                {t('login.remember')}    
+                <p>{t('login.remember')}</p>
               </label>
             <p>{t('login.forgotten')}</p>
           </div>
