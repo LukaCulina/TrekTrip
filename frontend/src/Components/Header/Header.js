@@ -90,14 +90,15 @@ const Header = () => {
                         </button>
                     </Link>
                 )}
-                <div className="language-switcher">
-                    <button className="language-button" onClick={() => changeLanguage('hr')}>
-                        HR
-                    </button>
-                    <button className="language-button" onClick={() => changeLanguage('en')}>
-                        EN
-                    </button>
-                </div>
+                 <select
+                    value={localStorage.getItem('language')}
+                    onChange={e => changeLanguage(e.target.value)}
+                    className="language-dropdown"
+                    >
+                    <option value="hr">HR</option>
+                    <option value="en">EN</option>
+                </select>
+
             </nav>
         </header>  
     )
