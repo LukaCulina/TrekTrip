@@ -1,0 +1,80 @@
+.homepage {
+    text-align: center;
+  }
+  
+  .homepage-header {
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+    padding: 20px;
+    height: 400px;
+  }
+  
+  .homepage-header h1 {
+    font-size: 2.5em;
+    margin: 0;
+  }
+  .bejbe{
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .homepage-header p {
+    margin: 0.5em 0 1em;
+    font-size: 1.2em;
+    color: #666;
+  }
+  
+  .featured-trips {
+    margin: 60px;
+  }
+  
+  .featured-trips h2 {
+    font-size: 2em;
+    margin-bottom: 50px;
+  }
+
+  .trip-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .trip-cards a {
+    color: black;
+    text-decoration: none;
+  }
+
+  .trip-card {
+    width: 80%;
+  }
+
+  .dropdown{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+.dropdown-item{
+  background-color: white;
+  padding: 20px;
+  width: 49%;
+  text-align: left;
+  transition: filter 300ms;
+
+}
+.dropdown-item:hover{
+  filter: brightness(50%);
+}
+
+.searchbar{
+  background-color: lightgrey;
+  border: none;
+  padding: 5px 20px 5px 20px;
+  width: 50%;
+  border-radius: 15px;
+  font-size: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+  

@@ -1,0 +1,36 @@
+  .card {
+    display: flex;
+    margin: 20px auto;
+    width: 60%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #dae5ef;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+
+  .card-image {
+    width: 40%;
+    height: auto;
+  }
+  
+  .card-content {
+    padding: 60px;
+    width: 60%;
+    color: black;
+  }
+  
+  .card-title {
+    margin-bottom: 10px;
+  }
+  
+  .card-description {
+    margin-bottom: 20px;
+  }
+  

@@ -1,0 +1,117 @@
+{
+    "sitenames": {
+      "home": "Trektrip",
+      "trips": "Trips",
+      "profile": "Profile",
+      "editProfile": "Edit Profile",
+      "addTrip": "Add Trip",
+      "login": "Login",
+      "register": "Register"
+    },
+    "home": {
+      "title": "Find your next adventure",
+      "subtitle": "Your reliable compass through the maze of travel, illuminating hidden gems and creating adventures on demand with precision and passion",
+      "tripsTitle": "Featured Trips"
+    },
+    "language": {
+      "croatian": "Croatian",
+      "english": "English"
+    },
+    "header": {
+      "trips": "Trips",
+      "login": "Login",
+      "profile": "Profile",
+      "logout": "Logout"
+    },
+    "footer": {
+      "privacyPolicy": "Privacy Policy",
+      "termsConditions": "Terms & Conditions",
+      "cookiePolicy": "Cookie Policy",
+      "contact": "Contact"
+    },
+    "login": {
+      "title": "LOGIN",
+      "username": "Username",
+      "password": "Password",
+      "submit": "Login",
+      "noAccount": "Don't have an account?",
+      "register": "Register",
+      "remember": "Remember me",
+      "forgotten": "Forgotten password?",
+       "failed": "Login failed. Please try again."
+    },
+    "register": {
+        "title": "REGISTER",
+        "email": "Email",
+        "username": "Username",
+        "password": "Password",
+        "repeatPassword": "Repeat your password",
+        "submit": "Register",
+        "haveAccount": "Already have an account?",
+        "login": "Login"
+    },
+    "profile": {
+      "about": "About Me",
+      "trips": "My Trips",
+      "editProfile": "Edit Profile",
+      "addTrip": "Add Trip"
+    },
+    "filters": {
+      "sort": "Sort",
+      "all": "All",
+      "country": "Country",
+      "month": "Month",
+      "highestRated": "Highest Rated",
+      "longest": "Longest",
+      "shortest": "Shortest",
+      "mostExpensive": "Most Expensive",
+      "leastExpensive": "Least Expensive",
+      "clearFilters": "CLEAR FILTERS",
+      "countryPlaceholder": "Choose a country"
+    },
+    "trip": {
+      "country": "Country",
+      "destination": "Destination",
+      "month": "Month",
+      "duration": "Duration",
+      "price": "Price",
+      "author": "Author",
+      "days": "days",
+      "comments": "Comments"
+    },
+    "editProfile": {
+      "username": "Username",
+      "description": "Description",
+      "profile-photo": "Profile Photo",
+      "editButton": "Edit Profile"
+    },
+    "addTrip": {
+      "title": "Add New Trip",
+      "name": "Title",
+      "description": "Description",
+      "length": "Duration in Days",
+      "price": "Price",
+      "month": "Travel Month",
+      "submit": "Add Trip",
+      "chooseMonth": "Choose a Month",
+      "country": "Country",
+      "location": "Location",
+      "images": "Add images",
+      "clear": "Clear all"
+    },
+    "months": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ]
+  }
+  

@@ -1,0 +1,116 @@
+{   
+    "sitenames": {
+        "home": "Trektrip",
+        "trips": "Putovanja",
+        "profile": "Profil",
+        "editProfile": "Uredi Profil",
+        "addTrip": "Dodaj Put",
+        "login": "Prijava",
+        "register": "Registracija"
+    },
+    "home": {
+        "title": "Pronađite svoju sljedeću pustolovinu",
+        "subtitle": "Vaš pouzdani kompas kroz labirint putovanja, osvjetljavajući skrivene dragulje i stvarajući avanture po narudžbi s preciznošću i strašću",
+        "tripsTitle": "Istaknuta putovanja"
+    },
+    "language": {
+        "croatian": "Hrvatski",
+        "english": "Engleski"
+    },
+    "header": {
+        "trips": "Putovanja",
+        "login": "Prijava",
+        "profile": "Profil",
+        "logout": "Odjava"
+    },
+    "footer": {
+        "privacyPolicy": "Pravila o privatnosti",
+        "termsConditions": "Uvjeti i odredbe",
+        "cookiePolicy": "Pravila o kolačićima",
+        "contact": "Kontakt"
+    },
+    "login": {
+        "title": "PRIJAVA",
+        "username": "Korisničko ime",
+        "password": "Lozinka",
+        "submit": "Prijavi se",
+        "noAccount": "Nemate račun?",
+        "register": "Registrirajte se",
+        "remember": "Zapamti me",
+        "forgotten": "Zaboravljena lozinka?",
+        "failed": "Prijava nije uspjela. Pokušajte ponovo."
+    },
+    "register": {
+        "title": "REGISTRACIJA",
+        "email": "Email",
+        "username": "Korisničko ime",
+        "password": "Lozinka",
+        "repeatPassword": "Ponovite lozinku",
+        "submit": "Registriraj se",
+        "haveAccount": "Već imate račun?",
+        "login": "Prijavite se"
+    },
+    "profile": {
+        "about": "O meni",
+        "trips": "Moja putovanja",
+        "editProfile": "Uredi profil",
+        "addTrip": "Dodaj put"
+    },
+    "filters": {
+        "sort": "Sortiraj",
+        "all": "Svi",
+        "country": "Država",
+        "month": "Mjesec",
+        "highestRated": "Najbolje ocijenjeni",
+        "longest": "Najduži",
+        "shortest": "Najkraći",
+        "mostExpensive": "Najskuplji",
+        "leastExpensive": "Najjeftiniji",
+        "clearFilters": "OČISTI FILTERE",
+        "countryPlaceholder": "Filtriraj po državi"
+    },
+    "trip": {
+        "country": "Država",
+        "destination": "Odredište",
+        "month": "Mjesec",
+        "duration": "Trajanje",
+        "price": "Cijena",
+        "author": "Autor",
+        "days": "dana",
+        "comments": "Komentari"
+    },
+    "editProfile": {
+        "username": "Korisničko ime",
+        "description": "Opis",
+        "profile-photo": "Profilna slika",
+        "editButton": "Uredi profil"
+    },
+    "addTrip": {
+        "title": "Dodajte Novo Putovanje",
+        "name": "Naslov",
+        "description": "Opis",
+        "length": "Trajanje u danima",
+        "price": "Cijena",
+        "month": "Mjesec putovanja",
+        "submit": "Dodaj Putovanje",
+        "chooseMonth": "Odaberite Mjesec",
+        "country": "Država",
+        "location": "Lokacija",
+        "images": "Dodajte slike",
+        "clear": "Obriši sve"
+    },
+    "months": [
+        "Siječanj",
+        "Veljača",
+        "Ožujak",
+        "Travanj",
+        "Svibanj",
+        "Lipanj",
+        "Srpanj",
+        "Kolovoz",
+        "Rujan",
+        "Listopad",
+        "Studeni",
+        "Prosinac"
+    ]
+}
