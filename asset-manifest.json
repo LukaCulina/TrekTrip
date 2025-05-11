@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/TrekTrip/static/css/main.8739385f.css",
-    "main.js": "/TrekTrip/static/js/main.bbdc98cd.js",
+    "main.js": "/TrekTrip/static/js/main.de657745.js",
     "static/media/Login.jpg": "/TrekTrip/static/media/Login.8572722959b0db0a98f2.jpg",
     "index.html": "/TrekTrip/index.html",
     "main.8739385f.css.map": "/TrekTrip/static/css/main.8739385f.css.map",
-    "main.bbdc98cd.js.map": "/TrekTrip/static/js/main.bbdc98cd.js.map"
+    "main.de657745.js.map": "/TrekTrip/static/js/main.de657745.js.map"
   },
   "entrypoints": [
     "static/css/main.8739385f.css",
-    "static/js/main.bbdc98cd.js"
+    "static/js/main.de657745.js"
   ]
 }
