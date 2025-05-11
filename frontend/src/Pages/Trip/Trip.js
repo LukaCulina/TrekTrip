@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Rating from '@mui/material/Rating';
-import Stack from '@mui/material/Stack';
 import axiosInstance from '../../axios/axiosInstance';
 import tripService from '../../Services/tripService/tripService';
 import { useTranslation } from 'react-i18next';
@@ -20,7 +18,6 @@ const Trip = () => {
     const [hasRated, setHasRated] = useState(false); // State to track if user has already rated
     const [activeUserId, setActiveUserId] = useState(null); // State to store current active user's ID
     const [days, setDays] = useState([]);
-    const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -176,60 +173,3 @@ const Trip = () => {
 }
 
 export default Trip;
-
-
-//  Trip days
-
-{/*<div className='trip-days'>*/}
-{/*    {days.map(day => (*/}
-{/*        <div key={day.id} className="trip-day">*/}
-{/*        <h3>{day.title}</h3>*/}
-{/*        <p>{day.text}</p>*/}
-{/*        </div>*/}
-{/*    ))}*/}
-{/*</div>*/}
-
-//  Trip details
-
-{/*<div className='trip-details'>*/}
-{/*    <Stack spacing={1}>*/}
-{/*        <Rating*/}
-{/*            className="rating"*/}
-{/*            name="half-rating"*/}
-{/*            value={averageRating}*/}
-{/*            precision={0.1}*/}
-{/*            size='large'*/}
-{/*            onChange={handleRatingChange}*/}
-{/*            readOnly={!activeUserId || hasRated  || activeUserId === trip.user.id} // Disable rating if user is not logged in or has already rated*/}
-{/*        />*/}
-{/*        <p>Average Rating: {averageRating.toFixed(1)}</p>*/}
-{/*    </Stack> */}
-{/*    <div className="trip-summary">*/}
-{/*        <p><strong>{t('trip.country')}:</strong></p><span>{trip.locations.length > 0 ? trip.locations[0].country.name : 'Unknown Country'}</span>*/}
-{/*        <p><strong>{t('trip.destination')}:</strong></p><span>{trip.locations.map(location => location.destination).join(', ')}</span>*/}
-{/*        <p><strong>{t('trip.month')}:</strong></p><span>{trip.tripMonth}</span>*/}
-{/*        <p><strong>{t('trip.duration')}:</strong></p><span>{trip.lengthInDays} {t('trip.days')}</span>*/}
-{/*        <p><strong>{t('trip.price')}:</strong></p><span>{trip.price} €</span>*/}
-{/*    </div>   */}
-{/*</div>             */}
-
-
-// Trip comments
-
-{/*<div><h2 className="commentSectionTitle">{t('trip.comments')}</h2></div>*/}
-{/*<div className="comments-section">*/}
-{/*    <ul className="commentsListContainer">*/}
-{/*        {trip.comments.map(comment => (*/}
-{/*            <div className="singleCommentContainer">*/}
-{/*                <p className="commentDisplayUsername">{comment.user.username}</p>*/}
-{/*                <p key={comment.id}>{comment.content} {comment.timeOfPosting}</p>*/}
-{/*            </div> */}
-{/*        ))}*/}
-{/*    </ul>*/}
-{/*    {isLoggedIn && (*/}
-{/*        <div className="commentInputSection">*/}
-{/*            <textarea value={newComment} onChange={(e) => setNewComment(e.target.value)} />*/}
-{/*            <button onClick={handleCommentSubmit}>Submit Comment</button>*/}
-{/*        </div>*/}
-{/*    )}*/}
-{/*</div>*/}

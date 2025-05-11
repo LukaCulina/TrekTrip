@@ -33330,3 +33330,6 @@ Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection wa
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
 	... 16 more
+2025-05-11 19:40:23.869279+02:00 jdbc[65]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]LOCATION_ID"; SQL statement:
+LOCATION_ID [42000-224]

@@ -20,7 +20,7 @@ const TripDetails = ({ trip, averageRating, handleRatingChange, activeUserId, ha
                     onChange={handleRatingChange}
                     readOnly={!activeUserId || hasRated || activeUserId === trip.user.id}
                 />
-                <p>Avarage rating :  {averageRating.toFixed(1)}</p>
+                <p>Average rating :  {averageRating.toFixed(1)}</p>
             </Stack>
             <TripSummary trip={trip} />
         </div>

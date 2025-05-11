@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import HighlightedTripCard from '../../Components/HighlightedTripCard/HighlightedTripCard';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../axios/axiosInstance';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
@@ -90,18 +89,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
-
-
-
-
-{/*<section className="featured-trips">*/}
-{/*    <div className="trip-cards">*/}
-{/*        {topTrips.map((trip) => (*/}
-{/*            <Link key={trip.id} to={`/putovanja/${trip.id}`}>*/}
-{/*                <HighlightedTripCard trip={trip} className="trip-card" />*/}
-{/*            </Link>*/}
-{/*        ))}*/}
-{/*    </div>*/}
-{/*</section>*/}
