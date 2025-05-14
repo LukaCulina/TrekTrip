@@ -2,6 +2,7 @@ package com.trektrip.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -49,7 +50,6 @@ public class UserInfo {
     }
     
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    @JsonBackReference
-    @JsonIgnore
+    @JsonManagedReference
     private List<Trip> trips;
 }

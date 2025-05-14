@@ -30,6 +30,7 @@ public class Trip {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JsonBackReference
     private UserInfo user;
 
     @OneToMany(targetEntity = Image.class)
@@ -50,11 +51,10 @@ public class Trip {
     @OneToMany(mappedBy = "trip", fetch = FetchType.EAGER)
     @Fetch(FetchMode.SELECT)
     @JsonManagedReference
-    @JsonIgnore
     private List<Rating> ratings;
 
     @OneToMany(mappedBy = "trip", fetch = FetchType.EAGER)
-    @JsonIgnore
+    @JsonManagedReference
     private List<Comment> comments;
 
     private boolean isPublic;

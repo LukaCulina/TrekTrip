@@ -1,5 +1,6 @@
 package com.trektrip.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,7 +25,7 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name="trip_id", referencedColumnName = "id")
-    @JsonIgnore
+    @JsonBackReference
     private Trip trip;
 
     private String content;
