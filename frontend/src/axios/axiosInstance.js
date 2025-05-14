@@ -7,7 +7,7 @@ let retryCounter = 0; // Initialize the retry counter+
 const refreshAccessToken = async () => {
 
   try {
-    const res = await axios.post('http://localhost:8080/auth/refreshToken', {
+    const res = await axios.post('https://dark-ardis-lukaculina-bde5dd25.koyeb.app/auth/refreshToken', {
       token: localStorage.getItem('authToken')
     });
     const accessToken = res.data.accessToken;
