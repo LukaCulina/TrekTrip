@@ -26,7 +26,7 @@ const refreshAccessToken = async () => {
 
 // Create Axios instance
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8080',
+  baseURL: 'https://dark-ardis-lukaculina-bde5dd25.koyeb.app/',
 });
 
 // Request interceptor to attach the token to the request
