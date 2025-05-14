@@ -50,9 +50,11 @@ public class Trip {
     @OneToMany(mappedBy = "trip", fetch = FetchType.EAGER)
     @Fetch(FetchMode.SELECT)
     @JsonManagedReference
+    @JsonIgnore
     private List<Rating> ratings;
 
     @OneToMany(mappedBy = "trip", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Comment> comments;
 
     private boolean isPublic;
