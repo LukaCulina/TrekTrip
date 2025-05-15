@@ -50,6 +50,6 @@ public class UserInfo {
     }
     
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    @JsonManagedReference
+    @JsonIgnore
     private List<Trip> trips;
 }
