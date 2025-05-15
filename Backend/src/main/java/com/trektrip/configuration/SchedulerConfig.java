@@ -18,12 +18,11 @@ public class SchedulerConfig {
     }
 
     @Bean
-    public SimpleTrigger topTripsPrintTrigger() {
-        SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.simpleSchedule()
-                .withIntervalInSeconds(5).repeatForever();
-
-        return TriggerBuilder.newTrigger().forJob(topTripsPrintJobDetail())
-                .withIdentity(TOP_TRIPS_TRIGGER).withSchedule(scheduleBuilder).build();
+    public CronTrigger topTripsPrintTrigger() {
+        return TriggerBuilder.newTrigger()
+                .forJob(topTripsPrintJobDetail())
+                .withIdentity(TOP_TRIPS_TRIGGER)
+                .withSchedule(CronScheduleBuilder.dailyAtHourAndMinute(0, 0)) // 00:00 daily
+                .build();
     }
-
 }
