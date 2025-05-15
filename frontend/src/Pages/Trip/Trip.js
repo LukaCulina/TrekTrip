@@ -96,7 +96,7 @@ const Trip = () => {
         }
     };
 
-    const calculateAverageRating = (ratings) => {
+    const calculateAverageRating = (ratings = []) => {
         if (!ratings.length) return 0;
         const total = ratings.reduce((sum, rating) => sum + rating.rating, 0);
         console.log(total / ratings.length)
@@ -143,7 +143,7 @@ const Trip = () => {
                 <div className='trip-intro'>
                     <div className='trip-title'>
                         <h1>{trip.title}</h1>
-                        <p className="author">{t('trip.author')}: {trip.user.username}</p>
+                        <p className="author">{t('trip.author')}: {trip?.user?.username}</p>
                     </div>
                     <div className='trip-description'>
                         <p className="intro">{trip.description}</p>

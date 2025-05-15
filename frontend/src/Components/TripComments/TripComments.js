@@ -9,7 +9,7 @@ const TripComments = ({ trip, newComment, setNewComment, handleCommentSubmit, is
         <div>
             <div className="comments-section">
                 <ul className="commentsListContainer">
-                    {trip.comments.map(comment => (
+                    {trip?.comments?.map(comment => (
                         <div className="singleCommentContainer" key={comment.id}>
                             <p className="commentDisplayUsername">{comment.user.username}</p>
                             <p>{comment.content} {comment.timeOfPosting}</p>

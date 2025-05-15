@@ -5,7 +5,7 @@ import './HighlightedTripCard.css';
 
 const HighlightedTripCard = ({ trip }) => {
 
-    const ratings = trip?.ratings || [];
+  const ratings = trip?.ratings || [];
 
   const calculateAverageRating = (ratings) => {
     if (!ratings.length) return 0;

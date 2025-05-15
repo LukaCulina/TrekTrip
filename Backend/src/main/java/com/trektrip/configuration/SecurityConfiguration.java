@@ -48,11 +48,12 @@ public class SecurityConfiguration {
                             "/country",
                             "/country/**",
                             "/image",
+                            "/image/**",
                             "/pin",
                             "/day",
+                            "/day/**",
                             "/rating",
-                            "/location",
-                            "/image/all"
+                            "/location"
                     ).permitAll();
                     auth.requestMatchers("/auth/logout").hasRole("USER");
                     auth.anyRequest().authenticated();
