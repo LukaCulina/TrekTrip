@@ -43,14 +43,16 @@ const Home = () => {
     }, []);
 
     useEffect(() => {
-        const calculateAverageRating = (ratings) => {
-            if (!ratings.length) return 0;
+        const calculateAverageRating = (ratings = []) => {  // Add default parameter
+            if (ratings.length === 0) return 0;
             const total = ratings.reduce((sum, rating) => sum + rating.rating, 0);
             return total / ratings.length;
         };
 
+
         const tripsWithAverageRating = trips.map(trip => {
-            const averageRating = calculateAverageRating(trip.ratings);
+            const ratings = trip.ratings || []; // Default to empty array if undefined
+            const averageRating = calculateAverageRating(ratings);
             return { ...trip, averageRating };
         });
 

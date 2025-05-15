@@ -11,6 +11,7 @@ import org.hibernate.annotations.Type;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -51,7 +52,7 @@ public class Trip {
     @OneToMany(mappedBy = "trip", fetch = FetchType.EAGER)
     @Fetch(FetchMode.SELECT)
     @JsonIgnore
-    private List<Rating> ratings;
+    private List<Rating> ratings = new ArrayList<>(); // Initialize as empty list
 
     @OneToMany(mappedBy = "trip", fetch = FetchType.EAGER)
     @JsonIgnore
