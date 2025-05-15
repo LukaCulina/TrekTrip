@@ -55,8 +55,8 @@ public class Trip {
     private List<Rating> ratings = new ArrayList<>(); // Initialize as empty list
 
     @OneToMany(mappedBy = "trip", fetch = FetchType.EAGER)
-    @JsonIgnore
-    private List<Comment> comments;
+    @JsonManagedReference
+    private List<Comment> comments = new ArrayList<>();
 
     private boolean isPublic;
 

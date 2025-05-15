@@ -9,7 +9,7 @@ import './Auth.css';
 
 const Login = () => {
 
-  axios.defaults.baseURL = 'http://localhost:8080';
+  axios.defaults.baseURL = 'https://dark-ardis-lukaculina-bde5dd25.koyeb.app/';
 
   const {t} = useTranslation();
 

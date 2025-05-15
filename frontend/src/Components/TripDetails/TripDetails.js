@@ -18,7 +18,7 @@ const TripDetails = ({ trip, averageRating, handleRatingChange, activeUserId, ha
                     precision={0.1}
                     size='large'
                     onChange={handleRatingChange}
-                    readOnly={!activeUserId || hasRated || activeUserId === trip.user.id}
+                    readOnly={!activeUserId || hasRated || activeUserId === trip?.user?.id}
                 />
                 <p>Average rating :  {averageRating.toFixed(1)}</p>
             </Stack>

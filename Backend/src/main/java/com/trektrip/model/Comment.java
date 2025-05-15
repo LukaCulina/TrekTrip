@@ -25,8 +25,7 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name="trip_id", referencedColumnName = "id")
-    //@JsonBackReference
-    @JsonIgnore
+    @JsonBackReference
     private Trip trip;
 
     private String content;

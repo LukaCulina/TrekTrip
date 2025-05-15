@@ -41,6 +41,7 @@ public class SecurityConfiguration {
                             "/auth/login",
                             "/auth/refreshToken",
                             "/user/register",
+                            "user/all",
                             "/userRole",
                             "/trip",
                             "/trip/**",
@@ -52,6 +53,7 @@ public class SecurityConfiguration {
                             "/pin",
                             "/day",
                             "/day/**",
+                            "/day/all",
                             "/rating",
                             "/location"
                     ).permitAll();

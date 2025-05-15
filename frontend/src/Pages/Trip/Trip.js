@@ -33,30 +33,33 @@ const Trip = () => {
 
                 if (username) {
                     setIsLoggedIn(true);
-                const usersResponse = await axiosInstance.get(`/user/all`);
-                const users = usersResponse.data;
-                const activeUser = users.find(user => user.username === username);
-                if (activeUser) {
-                    setActiveUserId(activeUser.id);
-                    console.log(activeUser.id)
-                    // Check if the user has already rated this trip
-                    console.log(activeUserId)
-                    const existingRating = response.data.ratings.find(rating => rating.user.id === activeUser.id);
-                    if (existingRating) {
-                        setUserRating(existingRating.rating);
-                        setHasRated(true); // User has already rated
+                    const usersResponse = await axiosInstance.get(`/user/all`);
+                    const users = usersResponse.data;
+
+                    if (!Array.isArray(users)) {
+                        console.error('Expected users to be an array, got:', users);
+                    return; // or handle the error appropriately
+                    }
+
+                    const activeUser = users.find(user => user.username === username);
+                    if (activeUser) {
+                        setActiveUserId(activeUser.id);
+                        console.log(activeUser.id)
+                        // Check if the user has already rated this trip
+                        console.log(activeUser.id)
+                        const existingRating = response.data.ratings?.find(rating => rating.user.id === activeUser.id);
+                        if (existingRating) {
+                            setUserRating(existingRating.rating);
+                            setHasRated(true); // User has already rated
+                        }
                     }
                 }
-            }
-
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching trip:', error);
                 setError('Error fetching trip data.');
                 setLoading(false);
             }
-
-           
         };
 
         fetchTripData();
@@ -68,7 +71,7 @@ const Trip = () => {
                 console.log(id)
                 console.log(daysResponse.data[0].trip.id)
                 console.log('Current trip ID type:', typeof id, id);
-            console.log('Day trip ID type:', typeof daysResponse.data[0].trip.id, daysResponse.data[0].trip.id);
+                console.log('Day trip ID type:', typeof daysResponse.data[0].trip.id, daysResponse.data[0].trip.id);
 
                 // Filter the days data to include only days with trip ID equal to the current trip ID
                 const filteredDays = daysResponse.data.filter(day => day.trip.id == id);
