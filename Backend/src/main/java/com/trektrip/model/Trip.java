@@ -51,8 +51,8 @@ public class Trip {
 
     @OneToMany(mappedBy = "trip", fetch = FetchType.EAGER)
     @Fetch(FetchMode.SELECT)
-    @JsonIgnore
-    private List<Rating> ratings = new ArrayList<>(); // Initialize as empty list
+    @JsonManagedReference
+    private List<Rating> ratings = new ArrayList<>();
 
     @OneToMany(mappedBy = "trip", fetch = FetchType.EAGER)
     @JsonManagedReference
