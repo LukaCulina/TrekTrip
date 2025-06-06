@@ -74,7 +74,7 @@ const Trip = () => {
                 console.log('Day trip ID type:', typeof daysResponse.data[0].trip.id, daysResponse.data[0].trip.id);
 
                 // Filter the days data to include only days with trip ID equal to the current trip ID
-                const filteredDays = daysResponse.data.filter(day => day.trip.id == id);
+                const filteredDays = daysResponse.data.filter(day => day.trip.id === id);
                 setDays(filteredDays)
                 console.log('Filtered days data:', filteredDays);
             } catch (error) {

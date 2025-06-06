@@ -12,8 +12,8 @@ import './Profile.css';
 const Profile = () => {
   const { t } = useTranslation();
   const [user, setUser] = useState(null);
-  const [id, setId] = useState(null);
-  const [activeUser, setActiveUser] = useState(null);
+  const [, setId] = useState(null);
+  const [, setActiveUser] = useState(null);
   const navigate = useNavigate();
   const { isLoggedIn } = useAuth();
   const [topTrips, setTopTrips] = useState([]);
@@ -22,42 +22,40 @@ const Profile = () => {
     if (!isLoggedIn) {
       navigate('/prijava'); // Redirect if not logged in
     } else {
-      fetchData(); // Fetch user data if logged in
+      const fetchData = async () => {
+        try {
+          const username = localStorage.getItem('username');
+          const response = await axiosInstance.get(`/user/all`);
+          const users = response.data;
+          const activeUser = users && Array.isArray(users) ? users.find(user => user.username === username) : null;
+
+          if (activeUser) {
+            setActiveUser(activeUser);
+            setId(activeUser.id); 
+            localStorage.setItem('userId', activeUser.id);
+
+            const userResponse = await axiosInstance.get(`/user/${activeUser.id}`); 
+            setUser(userResponse.data);
+
+            const tripsResponse = await axiosInstance.get(`/trip/all`);
+            const userTrips = tripsResponse.data.filter(trip => trip.user.username === activeUser.username);
+
+            const userTripsWithAverage = userTrips.map(trip => {
+              const averageRating = calculateAverageRating(trip.ratings);
+              return { ...trip, averageRating };
+            });
+
+            const sortedTrips = userTripsWithAverage.sort((a, b) => b.averageRating - a.averageRating).slice(0, 3);
+            setTopTrips(sortedTrips);
+          } else {
+            console.error('Logged-in user not found');
+          }
+        } catch (error) {
+          console.error('Error fetching user:', error);
+        }
+      };
     }
   }, [isLoggedIn, navigate]);
-
-  const fetchData = async () => {
-    try {
-      const username = localStorage.getItem('username');
-      const response = await axiosInstance.get(`/user/all`);
-      const users = response.data;
-      const activeUser = users && Array.isArray(users) ? users.find(user => user.username === username) : null;
-
-      if (activeUser) {
-        setActiveUser(activeUser);
-        setId(activeUser.id); 
-        localStorage.setItem('userId', activeUser.id);
-
-        const userResponse = await axiosInstance.get(`/user/${activeUser.id}`); 
-        setUser(userResponse.data);
-
-        const tripsResponse = await axiosInstance.get(`/trip/all`);
-        const userTrips = tripsResponse.data.filter(trip => trip.user.username === activeUser.username);
-
-        const userTripsWithAverage = userTrips.map(trip => {
-          const averageRating = calculateAverageRating(trip.ratings);
-          return { ...trip, averageRating };
-        });
-
-        const sortedTrips = userTripsWithAverage.sort((a, b) => b.averageRating - a.averageRating).slice(0, 3);
-        setTopTrips(sortedTrips);
-      } else {
-        console.error('Logged-in user not found');
-      }
-    } catch (error) {
-      console.error('Error fetching user:', error);
-    }
-  };
 
   const calculateAverageRating = (ratings) => {
     if (!ratings.length) return 0;

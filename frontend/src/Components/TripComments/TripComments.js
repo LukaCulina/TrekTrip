@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 const TripComments = ({ trip, newComment, setNewComment, handleCommentSubmit, isLoggedIn, commentUploadText}) => {
     const { t } = useTranslation();
 
-
     return (
         <div>
             <div className="comments-section">

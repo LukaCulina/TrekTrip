@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import axiosInstance from '../../axios/axiosInstance'; 
@@ -98,7 +98,6 @@ const Header = () => {
                     <option value="hr">HR</option>
                     <option value="en">EN</option>
                 </select>
-
             </nav>
         </header>  
     )

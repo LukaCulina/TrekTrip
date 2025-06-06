@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 const TripSummary = ({ trip }) => {
@@ -15,7 +14,6 @@ const TripSummary = ({ trip }) => {
             <p><strong>{t('trip.duration')}:</strong></p>
             <span>{trip.lengthInDays} {t('trip.days')}</span>
             <p><strong>{t('trip.price')}:</strong></p>
-
             <span>{trip.price} €</span>
         </div>
     );

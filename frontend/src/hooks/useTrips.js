@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import axiosInstance from "../axios/axiosInstance";
 
-
 const useTrips = () => {
     const [trips, setTrips] = useState([]);
     const [loading, setLoading] = useState(true);

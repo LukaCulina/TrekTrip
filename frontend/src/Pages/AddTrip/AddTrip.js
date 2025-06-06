@@ -76,7 +76,7 @@ const AddTrip = () => {
     };
 
     fetchLocations();
-  }, [selectedCountry]);
+  }, [selectedCountry, countries]);
 
   const handleChange = (e) => {
     const { name, value, type, checked, files } = e.target;

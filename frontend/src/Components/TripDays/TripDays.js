@@ -1,5 +1,3 @@
-import React from 'react';
-
 const TripDays = ({ days }) => {
     return (
         <div className='trip-days'>

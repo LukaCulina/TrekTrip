@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Stack from '@mui/material/Stack';
 import Rating from '@mui/material/Rating';
