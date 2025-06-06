@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axiosInstance from '../../axios/axiosInstance';
 import tripService from '../../Services/tripService/tripService';
 import { useTranslation } from 'react-i18next';
-import './Trip.css';
 import TripComments from "../../Components/TripComments/TripComments";
 import TripDetails from "../../Components/TripDetails/TripDetails";
 import TripDays from "../../Components/TripDays/TripDays";
+import './Trip.css';
 
 const Trip = () => {
     const {t} = useTranslation();
@@ -169,7 +169,6 @@ const Trip = () => {
                 setNewComment={setNewComment}
                 handleCommentSubmit={handleCommentSubmit}
                 isLoggedIn={isLoggedIn}
-
             />
         </div>
     );

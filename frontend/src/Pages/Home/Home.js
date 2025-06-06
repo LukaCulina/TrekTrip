@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../axios/axiosInstance';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
-import './Home.css';
 import SearchInput from "../../Components/SearchInput/SearchInput";
 import FeaturedTrips from "../../Components/FeaturedTrips/FeaturedTrips";
+import './Home.css';
 
 const Home = () => {
     const { t } = useTranslation();
@@ -70,7 +70,6 @@ const Home = () => {
     if (error) {
         return <div>Error: {error}</div>;
     }
-
 
     return (
         <div className="homepage">

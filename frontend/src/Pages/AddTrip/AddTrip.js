@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import tripService from '../../Services/tripService/tripService';
@@ -13,7 +13,7 @@ const AddTrip = () => {
   const months = t('months', { returnObjects: true });
   const [selectedCountry, setSelectedCountry] = useState('');
   const [countries, setCountries] = useState([]);
-  const [locations, setLocations] = useState([]); // State to hold locations for selected country
+  const [locations, setLocations] = useState([]);
   const [selectedLocations, setSelectedLocations] = useState([]);
   const [days, setDays] = useState([]);
 
@@ -24,7 +24,7 @@ const AddTrip = () => {
     price: '',
     tripMonth: '',
     isPublic: false,
-    images: [], // Change to hold multiple images
+    images: [],
   });
 
   const [adding, setAdding] = useState(false);
@@ -162,16 +162,13 @@ const AddTrip = () => {
         for (const dayData of days) {
             // Make a POST request to create a new day
             await axiosInstance.post('/day', {
-                title: dayData.title,   // Day title
-                text: dayData.text,     // Day text
-                tripId: response.data.id          // Trip ID
+                title: dayData.title,
+                text: dayData.text,
+                tripId: response.data.id
             });
         }
         console.log('All days created successfully');
     
-        // Optionally, you can refetch trip data to update the UI with the new days
-        // const response = await tripService.getTripById(tripId);
-        // setTrip(response.data);
     } catch (error) {
         console.error('Error creating days:', error);
     }  

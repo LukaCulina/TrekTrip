@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../axios/axiosInstance';
 import { Helmet } from 'react-helmet';
@@ -25,7 +25,7 @@ const UpdateProfile = () => {
         setFormData({
           username: user.username || '',
           description: user.description || '',
-          image: null // We don't set the image here
+          image: null
         });
       } catch (error) {
         console.error('Error fetching user data:', error);

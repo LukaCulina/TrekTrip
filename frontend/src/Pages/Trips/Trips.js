@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import TripCard from '../../Components/TripCard/TripCard';
 import { Link } from 'react-router-dom';
 import tripService from '../../Services/tripService/tripService';

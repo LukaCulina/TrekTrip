@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import axiosInstance from '../../axios/axiosInstance';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
-import './Profile.css';
 import { Button } from "@mui/material";
 import HighlightedTripCard from '../../Components/HighlightedTripCard/HighlightedTripCard';
+import './Profile.css';
 
 const Profile = () => {
   const { t } = useTranslation();
