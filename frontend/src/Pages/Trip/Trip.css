@@ -1,5 +1,5 @@
   .main-image {
-    height: 450px;
+    height: clamp(200px, 40vh, 450px);
     background-size: cover;
     background-position: center;
     position: relative;
@@ -106,4 +106,25 @@
   .commentsListContainer{
       width: 100%;
       padding: 0;
+  }
+
+  @media (max-width: 768px) {
+    .trip {
+      flex-direction: column;
+      padding: 15px;
+    }
+  
+    .trip-intro {
+      width: 100%;
+      order: 1;
+    }
+  
+    .trip-details {
+      width: 100%;
+      order: 2;
+    }
+  
+    .trip-days {
+      order: 3;
+    }
   }

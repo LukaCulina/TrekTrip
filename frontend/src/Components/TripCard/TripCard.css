@@ -1,7 +1,8 @@
   .card {
     display: flex;
     margin: 20px auto;
-    width: 60%;
+    width: 100%;
+    max-width: 800px;
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
@@ -32,5 +33,15 @@
   
   .card-description {
     margin-bottom: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .card {
+      flex-direction: column;
+      width: 90%;
+    }
+    .card-image {
+      width: 100%;
+    }
   }
   

@@ -20,8 +20,7 @@ const Home = () => {
         setValue(event.target.value);
     };
 
-    const onSearch = (title, tripId) => {
-        setValue(title); // Set value if needed
+    const onSearch = (title, tripId) => { // Set value if needed
         navigate(`/putovanja/${tripId}`);
     };
 

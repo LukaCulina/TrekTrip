@@ -126,7 +126,7 @@ const Trips = () => {
                 <title>{t('sitenames.trips')}</title>
             </Helmet>
             <div className="filters">
-                <FormControl variant="outlined" className="dropdown">
+                <FormControl variant="outlined" className="dropdown" size="small">
                     <InputLabel>{t('filters.sort')}</InputLabel>
                     <Select
                         value={sortCriteria}
@@ -140,7 +140,7 @@ const Trips = () => {
                         <MenuItem value="leastExpensive">{t('filters.leastExpensive')}</MenuItem>
                     </Select>
                 </FormControl>
-                <FormControl variant="outlined" className="dropdown">
+                <FormControl variant="outlined" className="dropdown" size="small">
                     <InputLabel>{t('filters.country')}</InputLabel>
                     <Select
                         value={selectedCountry}
@@ -154,7 +154,7 @@ const Trips = () => {
                         ))}
                     </Select>
                 </FormControl>
-                <FormControl variant="outlined" className="dropdown">
+                <FormControl variant="outlined" className="dropdown" size="small">
                     <InputLabel>{t('filters.month')}</InputLabel>
                     <Select
                         value={selectedMonth}
