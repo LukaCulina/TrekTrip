@@ -5,6 +5,7 @@ import com.trektrip.repository.TripRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import com.trektrip.model.Rating
 
 import java.util.List;
 import java.util.Optional;

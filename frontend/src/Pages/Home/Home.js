@@ -26,42 +26,24 @@ const Home = () => {
     };
 
     useEffect(() => {
-        const fetchTrips = async () => {
+        const fetchData = async () => {
             try {
-                const response = await axiosInstance.get(`/trip/all`);
-                setTrips(response.data);
+                const [allTripsResponse, top3Response] = await Promise.all([
+                    axiosInstance.get('/trip/all'),
+                    axiosInstance.get('/trip/top3')
+                ]);
+                setTrips(allTripsResponse.data);
+                setTopTrips(top3Response.data);
                 setLoading(false);
-                console.log(response.data);
             } catch (error) {
                 console.error('Error fetching trips:', error);
                 setError(error.message);
                 setLoading(false);
             }
         };
-
-        fetchTrips();
+    
+        fetchData();
     }, []);
-
-    useEffect(() => {
-        const calculateAverageRating = (ratings = []) => {
-            if (ratings.length === 0) return 0;
-            const total = ratings.reduce((sum, rating) => sum + rating.rating, 0);
-            return total / ratings.length;
-        };
-
-
-        const tripsWithAverageRating = trips.map(trip => {
-            const ratings = trip.ratings || [];
-            const averageRating = calculateAverageRating(ratings);
-            return { ...trip, averageRating };
-        });
-
-        const sortedTrips = tripsWithAverageRating.sort((a, b) => b.averageRating - a.averageRating);
-
-        const topThreeTrips = sortedTrips.slice(0, 3);
-
-        setTopTrips(topThreeTrips);
-    }, [trips]);
 
     if (loading) {
         return <Spinner />;
