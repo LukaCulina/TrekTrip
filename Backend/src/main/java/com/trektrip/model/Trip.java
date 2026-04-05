@@ -31,7 +31,7 @@ public class Trip {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    @JsonIgnore
+    @JsonIgnoreProperties({"password", "email", "description", "image_id", "authorities", "roles"})
     private UserInfo user;
 
     @OneToMany(targetEntity = Image.class)

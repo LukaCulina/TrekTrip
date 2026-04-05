@@ -21,6 +21,26 @@ public class TripServiceImpl implements TripService{
     }
 
     @Override
+    public List<Trip> getTop3Trips() {
+        return tripRepository.findAll()
+            .stream()
+            .sorted((a, b) -> Double.compare(
+                calculateAverage(b.getRatings()),
+                calculateAverage(a.getRatings())
+            ))
+            .limit(3)
+            .collect(Collectors.toList());
+    }
+
+    private double calculateAverage(List<Rating> ratings) {
+        if (ratings == null || ratings.isEmpty()) return 0;
+        return ratings.stream()
+            .mapToDouble(Rating::getRating)
+            .average()
+            .orElse(0);
+    }
+
+    @Override
     public Optional<Trip> getTripById(Long id) {
         return tripRepository.findById(id);
     }
