@@ -9,6 +9,7 @@ import "./Header.css";
 const Header = () => {
     const { t, i18n } = useTranslation();
     const [activeButton, setActiveButton] = useState(null);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const { isLoggedIn, logout } = useAuth();
     const navigate = useNavigate();
 
@@ -19,14 +20,10 @@ const Header = () => {
 
     const handleLogout = async () => {
         try {
-            // Retrieve the token from local storage
             const token = localStorage.getItem('authToken');
             console.log(token);
 
-            // Proceed with the logout process
             await axiosInstance.post('/auth/logout', { token });
-
-            // Clear the authentication token from local storage
             
             logout();
             navigate('/');
@@ -51,6 +48,10 @@ const Header = () => {
 
     return (
         <header className='header'>
+            <div className="hamburger_icon" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+                {isMobileMenuOpen ? '✕' : '☰'}
+            </div>
+
             <span className="header_title">
                 <Link to='/' onClick={() => handleButtonClick(1)}>
                     TrekTrip
@@ -99,6 +100,35 @@ const Header = () => {
                     <option value="en">EN</option>
                 </select>
             </nav>
+
+            {isMobileMenuOpen && (
+                <div className="mobile-menu">
+                <Link to='/putovanja' onClick={() => { handleButtonClick(3); setIsMobileMenuOpen(false); }}>
+                    <button className="nav_button">{t('header.trips')}</button>
+                </Link>
+                {isLoggedIn ? (
+                    <>
+                        <Link to='/profil' onClick={() => { handleButtonClick(2); setIsMobileMenuOpen(false); }}>
+                            <button className="nav_button">{t('header.profile')}</button>
+                        </Link>
+                        <button className="nav_button" onClick={handleLogout}>
+                            {t('header.logout')}
+                        </button>
+                    </>
+                ) : (
+                    <Link to="/prijava" onClick={() => setIsMobileMenuOpen(false)}>
+                        <button className="nav_button">{t('header.login')}</button>
+                    </Link>
+                )}
+                <select
+                    value={localStorage.getItem('language')}
+                    onChange={e => changeLanguage(e.target.value)}
+                    className="language-dropdown">
+                    <option value="hr">HR</option>
+                    <option value="en">EN</option>
+                </select>
+            </div>
+            )}
         </header>  
     )
 }
