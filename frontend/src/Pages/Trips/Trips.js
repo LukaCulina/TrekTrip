@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import TripCard from '../../Components/TripCard/TripCard';
 import { Link } from 'react-router-dom';
 import tripService from '../../Services/tripService/tripService';
-import countryService from '../../Services/countryService/countryService';
 import { MenuItem, Select, FormControl, InputLabel, Button } from '@mui/material';
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
@@ -23,34 +22,28 @@ const Trips = () => {
     const [filtersApplied, setFiltersApplied] = useState(false);
 
     useEffect(() => {
-        const fetchTrips = async () => {
+        const fetchData = async () => {
             try {
                 const response = await tripService.getAllTrips();
                 setTrips(response.data);
                 setOriginalTrips(response.data);
+    
+                const uniqueCountries = [...new Set(
+                    response.data
+                        .filter(trip => trip.locations[0]?.country?.name)
+                        .map(trip => trip.locations[0].country.name)
+                )].sort();
+                setCountries(uniqueCountries.map(name => ({ name })));
+    
                 setLoading(false);
-                console.log(response.data);
             } catch (error) {
                 console.error('Error fetching trips:', error);
                 setError('Failed to fetch trips. Please try again later.');
                 setLoading(false);
             }
         };
-
-        fetchTrips();
-
-        const fetchCountries = async () => {
-            try {
-                const response = await countryService.getAllCountries();
-                const sortedCountries = response.data.sort((a, b) => a.name.localeCompare(b.name));
-                setCountries(sortedCountries);
-            } catch (error) {
-                console.error('Error fetching countries:', error);
-                setError('Failed to fetch countries. Please try again later.');
-            }
-        };
-
-        fetchCountries();
+    
+        fetchData();
     }, []);
 
     const sortTrips = (trips, criteria) => {
