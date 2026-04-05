@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
 import SearchInput from "../../Components/SearchInput/SearchInput";
 import FeaturedTrips from "../../Components/FeaturedTrips/FeaturedTrips";
+import { Spinner } from '../../Components/Spinner/Spinner';
 import './Home.css';
 
 const Home = () => {
@@ -20,7 +21,7 @@ const Home = () => {
         setValue(event.target.value);
     };
 
-    const onSearch = (title, tripId) => { // Set value if needed
+    const onSearch = (title, tripId) => {
         navigate(`/putovanja/${tripId}`);
     };
 
@@ -42,7 +43,7 @@ const Home = () => {
     }, []);
 
     useEffect(() => {
-        const calculateAverageRating = (ratings = []) => {  // Add default parameter
+        const calculateAverageRating = (ratings = []) => {
             if (ratings.length === 0) return 0;
             const total = ratings.reduce((sum, rating) => sum + rating.rating, 0);
             return total / ratings.length;
@@ -50,7 +51,7 @@ const Home = () => {
 
 
         const tripsWithAverageRating = trips.map(trip => {
-            const ratings = trip.ratings || []; // Default to empty array if undefined
+            const ratings = trip.ratings || [];
             const averageRating = calculateAverageRating(ratings);
             return { ...trip, averageRating };
         });
@@ -63,7 +64,7 @@ const Home = () => {
     }, [trips]);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <Spinner />;
     }
 
     if (error) {

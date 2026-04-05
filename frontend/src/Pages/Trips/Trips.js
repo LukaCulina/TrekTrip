@@ -6,6 +6,7 @@ import countryService from '../../Services/countryService/countryService';
 import { MenuItem, Select, FormControl, InputLabel, Button } from '@mui/material';
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
+import { Spinner } from '../../Components/Spinner/Spinner';
 import './Trips.css';
 
 const Trips = () => {
@@ -103,7 +104,7 @@ const Trips = () => {
     };
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <Spinner />;
     }
 
     if (error) {

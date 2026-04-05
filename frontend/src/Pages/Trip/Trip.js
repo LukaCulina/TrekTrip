@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import TripComments from "../../Components/TripComments/TripComments";
 import TripDetails from "../../Components/TripDetails/TripDetails";
 import TripDays from "../../Components/TripDays/TripDays";
+import { Spinner } from '../../Components/Spinner/Spinner';
 import './Trip.css';
 
 const Trip = () => {
@@ -38,7 +39,7 @@ const Trip = () => {
 
                     if (!Array.isArray(users)) {
                         console.error('Expected users to be an array, got:', users);
-                    return; // or handle the error appropriately
+                    return;
                     }
 
                     const activeUser = users.find(user => user.username === username);
@@ -73,7 +74,6 @@ const Trip = () => {
                 console.log('Current trip ID type:', typeof id, id);
                 console.log('Day trip ID type:', typeof daysResponse.data[0].trip.id, daysResponse.data[0].trip.id);
 
-                // Filter the days data to include only days with trip ID equal to the current trip ID
                 const filteredDays = daysResponse.data.filter(day => day.trip.id === id);
                 setDays(filteredDays)
                 console.log('Filtered days data:', filteredDays);
@@ -107,7 +107,7 @@ const Trip = () => {
     };
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <Spinner />;
     }
 
     if (error) {
