@@ -26,24 +26,42 @@ const Home = () => {
     };
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchTrips = async () => {
             try {
-                const [allTripsResponse, top3Response] = await Promise.all([
-                    axiosInstance.get('/trip/all'),
-                    axiosInstance.get('/trip/top3')
-                ]);
-                setTrips(allTripsResponse.data);
-                setTopTrips(top3Response.data);
+                const response = await axiosInstance.get(`/trip/all`);
+                setTrips(response.data);
                 setLoading(false);
+                console.log(response.data);
             } catch (error) {
                 console.error('Error fetching trips:', error);
                 setError(error.message);
                 setLoading(false);
             }
         };
-    
-        fetchData();
+
+        fetchTrips();
     }, []);
+
+    useEffect(() => {
+        const calculateAverageRating = (ratings = []) => {
+            if (ratings.length === 0) return 0;
+            const total = ratings.reduce((sum, rating) => sum + rating.rating, 0);
+            return total / ratings.length;
+        };
+
+
+        const tripsWithAverageRating = trips.map(trip => {
+            const ratings = trip.ratings || [];
+            const averageRating = calculateAverageRating(ratings);
+            return { ...trip, averageRating };
+        });
+
+        const sortedTrips = tripsWithAverageRating.sort((a, b) => b.averageRating - a.averageRating);
+
+        const topThreeTrips = sortedTrips.slice(0, 3);
+
+        setTopTrips(topThreeTrips);
+    }, [trips]);
 
     if (loading) {
         return <Spinner />;
@@ -61,7 +79,7 @@ const Home = () => {
             <header className="homepage-header">
                 <h1>{t('home.title')}</h1>
                 <p>{t('home.subtitle')}</p>
-                <SearchBar value={value} onChange={onChange} onSearch={onSearch} trips={trips} />
+                <SearchInput value={value} onChange={onChange} onSearch={onSearch} trips={trips} />
             </header>
 
             <section><h2>{t('home.tripsTitle')}</h2>

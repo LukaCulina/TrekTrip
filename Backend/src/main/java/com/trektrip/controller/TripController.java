@@ -34,11 +34,6 @@ public class TripController {
         return ResponseEntity.ok(tripService.getAllTrips());
     }
 
-    @GetMapping("/top3")
-    public ResponseEntity<List<Trip>> getTop3Trips() {
-        return ResponseEntity.ok(tripService.getTop3Trips());
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<Trip> getTripById(@PathVariable Long id) {
         Optional<Trip> optionaltrip = tripService.getTripById(id);
