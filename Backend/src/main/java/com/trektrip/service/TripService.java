@@ -8,7 +8,6 @@ import java.util.Optional;
 public interface TripService {
 
     List<Trip> getAllTrips();
-    List<Trip> getTop3Trips();
     Optional<Trip> getTripById(Long id);
     Trip createTrip(Trip trip);
     Trip updateTrip(Trip trip, Long id);
