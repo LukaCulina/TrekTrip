@@ -1,4 +1,6 @@
-const SearchInput = ({ value, onChange, onSearch, trips }) => {
+import "./SearchBar.css";
+
+const SearchBar = ({ value, onChange, onSearch, trips }) => {
     return (
         <div>
             <input className="searchbar" placeholder="..." type="text" value={value} onChange={onChange} />
@@ -17,4 +19,4 @@ const SearchInput = ({ value, onChange, onSearch, trips }) => {
     );
 };
 
-export default SearchInput;
+export default SearchBar;

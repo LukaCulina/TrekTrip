@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../axios/axiosInstance';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
-import SearchInput from "../../Components/SearchInput/SearchInput";
+import SearchBar from "../../Components/SearchBar/SearchBar";
 import FeaturedTrips from "../../Components/FeaturedTrips/FeaturedTrips";
 import { Spinner } from '../../Components/Spinner/Spinner';
 import './Home.css';
@@ -79,7 +79,7 @@ const Home = () => {
             <header className="homepage-header">
                 <h1>{t('home.title')}</h1>
                 <p>{t('home.subtitle')}</p>
-                <SearchInput value={value} onChange={onChange} onSearch={onSearch} trips={trips} />
+                <SearchBar value={value} onChange={onChange} onSearch={onSearch} trips={trips} />
             </header>
 
             <section><h2>{t('home.tripsTitle')}</h2>
