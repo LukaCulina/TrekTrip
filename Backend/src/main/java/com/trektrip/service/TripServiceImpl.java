@@ -5,8 +5,6 @@ import com.trektrip.repository.TripRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import com.trektrip.model.Rating;
-import java.util.stream.Collectors;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,14 +18,6 @@ public class TripServiceImpl implements TripService{
     @Override
     public List<Trip> getAllTrips() {
         return tripRepository.findAll();
-    }
-
-    private double calculateAverage(List<Rating> ratings) {
-        if (ratings == null || ratings.isEmpty()) return 0;
-        return ratings.stream()
-            .mapToDouble(Rating::getRating)
-            .average()
-            .orElse(0);
     }
 
     @Override
