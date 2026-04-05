@@ -74,7 +74,7 @@ const Trip = () => {
                 console.log('Current trip ID type:', typeof id, id);
                 console.log('Day trip ID type:', typeof daysResponse.data[0].trip.id, daysResponse.data[0].trip.id);
 
-                const filteredDays = daysResponse.data.filter(day => day.trip.id === id);
+                const filteredDays = daysResponse.data.filter(day => day.trip.id === Number(id));
                 setDays(filteredDays)
                 console.log('Filtered days data:', filteredDays);
             } catch (error) {
@@ -142,6 +142,7 @@ const Trip = () => {
                  style={{backgroundImage: `url(${trip && trip.images && trip.images.length > 0 ? process.env.PUBLIC_URL + trip.images[0].url : ''})`}}>
                 <div className="overlay"></div>
             </div>
+            
             <div className="trip">
                 <div className='trip-intro'>
                     <div className='trip-title'>
@@ -161,8 +162,8 @@ const Trip = () => {
                     hasRated={hasRated}
                 />
             </div>
-            <h2 className="commentSectionTitle">{t('trip.comments')}</h2>
 
+            <h2 className="commentSectionTitle">{t('trip.comments')}</h2>
             <TripComments
                 trip={trip}
                 newComment={newComment}

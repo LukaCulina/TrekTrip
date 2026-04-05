@@ -36,7 +36,6 @@
     cursor: pointer;
     color: #115fb4;
     padding: 5px 15px;
-
 }
 
 .auth_button{
@@ -92,9 +91,9 @@
 
 .dropdown-container {
     position: relative;
-  }
-  
-  .dropdown-content {
+}
+
+.dropdown-content {
     display: none; 
     position: absolute;
     top: 100%;
@@ -103,22 +102,21 @@
     min-width: 100px;
     padding: 10px;
     border: 1px solid #ccc;
-    z-index: 1; 
+    z-index: 1;
+}
 
-  }
-  
-  .dropdown-container.open .dropdown-content {
+.dropdown-container.open .dropdown-content {
     display: block; 
-  }
+}
 
-  .nav_button {
+.nav_button {
     background-color: transparent;
     border: none;
     cursor: pointer;
     margin-right: 10px;
-  }
+}
 
-  .dropdown-content button {
+.dropdown-content button {
     display: block;
     width: 100%;
     text-align: left;
@@ -126,13 +124,13 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
-  }
-  
-  .dropdown-content button:hover {
-    background-color: #ddd;
-  }
+}
 
-  .mobile-menu {
+.dropdown-content button:hover {
+    background-color: #ddd;
+}
+
+.mobile-menu {
     display: none;
 }
 

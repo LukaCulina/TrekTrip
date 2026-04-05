@@ -59,43 +59,43 @@
 }
 
 .remember {
-display: flex;
-align-items: center;
-justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .auth-checkbox {
-display: flex;
-align-items: center;
-flex-direction: row !important;
-margin-bottom: 0 !important;
+  display: flex;
+  align-items: center;
+  flex-direction: row !important;
+  margin-bottom: 0 !important;
 }
 
 .auth-checkbox input {
-margin-right: 10px ;
+  margin-right: 10px ;
 }
 
 .auth-submit {
-padding: 10px;
-width: 40%;
-margin: 20px auto;
-background-color: #115fb4;
-color: white;
-border: none;
-border-radius: 15px;
-cursor: pointer;
--webkit-border-radius: 15px;
--moz-border-radius: 15px;
--ms-border-radius: 15px;
--o-border-radius: 15px;
+  padding: 10px;
+  width: 40%;
+  margin: 20px auto;
+  background-color: #115fb4;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
 }
 
 .auth-submit:hover {
-background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 .auth-form p {
-font-size: 0.9em;
+  font-size: 0.9em;
 }
 
 @media(max-width:768px){

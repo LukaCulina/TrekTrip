@@ -1,47 +1,46 @@
+.card {
+  display: flex;
+  margin: 20px auto;
+  width: 100%;
+  max-width: 800px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #dae5ef;
+  text-align: left;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-image {
+  width: 40%;
+  height: auto;
+}
+
+.card-content {
+  padding: 60px;
+  width: 60%;
+  color: black;
+}
+
+.card-title {
+  margin-bottom: 10px;
+}
+
+.card-description {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
   .card {
-    display: flex;
-    margin: 20px auto;
-    width: 100%;
-    max-width: 800px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: #dae5ef;
-    text-align: left;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
+    flex-direction: column;
+    width: 90%;
   }
-  
-  .card:hover {
-    transform: scale(1.05);
-  }
-
   .card-image {
-    width: 40%;
-    height: auto;
+    width: 100%;
   }
-  
-  .card-content {
-    padding: 60px;
-    width: 60%;
-    color: black;
-  }
-  
-  .card-title {
-    margin-bottom: 10px;
-  }
-  
-  .card-description {
-    margin-bottom: 20px;
-  }
-
-  @media (max-width: 768px) {
-    .card {
-      flex-direction: column;
-      width: 90%;
-    }
-    .card-image {
-      width: 100%;
-    }
-  }
-  
+}
