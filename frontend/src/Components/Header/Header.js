@@ -53,7 +53,7 @@ const Header = () => {
             </div>
 
             <span className="header_title">
-                <Link to='/' onClick={() => handleButtonClick(1)}>
+                <Link to='/' onClick={() => { handleButtonClick(1); setIsMobileMenuOpen(false) }}>
                     TrekTrip
                 </Link>
             </span>
