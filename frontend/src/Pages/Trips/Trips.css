@@ -20,9 +20,7 @@
 
 .destinations {
   display: flex;
-  flex-direction: column; 
-  justify-content: center;
-  gap: 18px; 
+  flex-direction: column;
   width: 100%; 
 }
 

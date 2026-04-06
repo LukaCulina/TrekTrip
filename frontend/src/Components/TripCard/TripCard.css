@@ -4,7 +4,7 @@
   width: 100%;
   max-width: 800px;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 20px;
   overflow: hidden;
   background-color: #dae5ef;
   text-align: left;
@@ -22,13 +22,15 @@
 }
 
 .card-content {
-  padding: 60px;
-  width: 60%;
+  padding: 30px;
   color: black;
 }
 
-.card-title {
-  margin-bottom: 10px;
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
 }
 
 .card-description {
