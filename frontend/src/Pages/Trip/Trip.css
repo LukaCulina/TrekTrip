@@ -56,6 +56,12 @@
   gap: 20px;
 }
 
+.trip-rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .trip-detail {
   margin-bottom: 20px;
 }

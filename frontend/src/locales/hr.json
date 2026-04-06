@@ -77,6 +77,7 @@
         "price": "Cijena",
         "author": "Autor",
         "days": "dana",
+        "rating": "Prosječna ocjena",
         "comments": "Komentari"
     },
     "editProfile": {
