@@ -162,15 +162,15 @@ const Trip = () => {
                     hasRated={hasRated}
                 />
             </div>
-
-            <h2 className="commentSectionTitle">{t('trip.comments')}</h2>
-            <TripComments
-                trip={trip}
-                newComment={newComment}
-                setNewComment={setNewComment}
-                handleCommentSubmit={handleCommentSubmit}
-                isLoggedIn={isLoggedIn}
-            />
+            <div className='comments'>
+                <TripComments
+                    trip={trip}
+                    newComment={newComment}
+                    setNewComment={setNewComment}
+                    handleCommentSubmit={handleCommentSubmit}
+                    isLoggedIn={isLoggedIn}
+                />
+            </div>
         </div>
     );
 }

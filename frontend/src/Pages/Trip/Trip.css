@@ -65,49 +65,8 @@
   margin-bottom: 5px;
 }
 
-.comments-section {
-  padding: 20px;
+.comments {
   background-color: #f8f8f8;
-  border-top: 1px solid #ddd;
-  width: 80%;
-  margin: 0 auto;
-}
-
-.comment {
-  margin-bottom: 15px;
-}
-
-.commentDisplayUsername{
-  font-weight: bold;
-  display: flex;
-  flex-direction: row;
-  padding: 5px;
-}
-
-.commentInputSection{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-
-}
-.commentSectionTitle{
-  color: #486284;
-  padding-left: 15%;
-  align-self: center;
-  align-content: center;
-  width: 60%;
-}
-
-.singleCommentContainer{
-  border: 1px solid black;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  padding: 20px;
-  width: 100%;
-}
-.commentsListContainer{
-    width: 100%;
-    padding: 0;
 }
 
 @media (max-width: 768px) {

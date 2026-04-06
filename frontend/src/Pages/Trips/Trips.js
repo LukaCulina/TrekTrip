@@ -142,7 +142,6 @@ const Trips = () => {
                         label="Country"
                         placeholder={t('filters.countryPlaceholder')}
                     >
-                        <MenuItem value="Sve">Sve</MenuItem>
                         {countries.map((country) => (
                             <MenuItem key={country.id} value={country.name}>{country.name}</MenuItem>
                         ))}
@@ -155,7 +154,6 @@ const Trips = () => {
                         onChange={handleMonthChange}
                         label="Month"
                     >
-                        <MenuItem value="Svi">{t('filters.all')}</MenuItem>
                         {months.map((month, index) => (
                             <MenuItem key={index} value={month}>{month}</MenuItem>
                         ))}
