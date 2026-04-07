@@ -4,13 +4,15 @@ import axiosInstance from '../../axios/axiosInstance';
 import tripService from '../../Services/tripService/tripService';
 import { useTranslation } from 'react-i18next';
 import TripComments from "../../Components/TripComments/TripComments";
-import TripDetails from "../../Components/TripDetails/TripDetails";
+import TripSummary from "../../Components/TripSummary/TripSummary";
 import TripDays from "../../Components/TripDays/TripDays";
 import { Spinner } from '../../Components/Spinner/Spinner';
+import Stack from '@mui/material/Stack';
+import Rating from '@mui/material/Rating';
 import './Trip.css';
 
 const Trip = () => {
-    const {t} = useTranslation();
+    const { t } = useTranslation();
     const { id } = useParams();
     const [trip, setTrip] = useState(null);
     const [userRating, setUserRating] = useState('');
@@ -39,7 +41,7 @@ const Trip = () => {
 
                     if (!Array.isArray(users)) {
                         console.error('Expected users to be an array, got:', users);
-                    return;
+                        return;
                     }
 
                     const activeUser = users.find(user => user.username === username);
@@ -114,7 +116,7 @@ const Trip = () => {
         return <div>{error}</div>;
     }
 
-   if (!trip) {
+    if (!trip) {
         return <div>Trip data not found</div>;
     }
 
@@ -138,29 +140,38 @@ const Trip = () => {
     console.log('Filtered days:', days);
     return (
         <div className="trip-page">
+            <h1>{trip.title}</h1>
+
             <div className="main-image"
-                 style={{backgroundImage: `url(${trip && trip.images && trip.images.length > 0 ? process.env.PUBLIC_URL + trip.images[0].url : ''})`}}>
-                <div className="overlay"></div>
+                style={{ backgroundImage: `url(${trip && trip.images && trip.images.length > 0 ? process.env.PUBLIC_URL + trip.images[0].url : ''})` }}>
             </div>
-            
+
             <div className="trip">
                 <div className='trip-intro'>
-                    <div className='trip-title'>
-                        <h1>{trip.title}</h1>
-                        <p className="author">{t('trip.author')}: {trip?.user?.username}</p>
+                    <p><b>{t('trip.author')}:</b> {trip?.user?.username}</p>
+                    <div className='trip-rating'>
+                        <Stack spacing={1}>
+                            <Rating
+                                className="rating"
+                                name="half-rating"
+                                value={averageRating}
+                                precision={0.1}
+                                size='large'
+                                onChange={handleRatingChange}
+                                readOnly={!activeUserId || hasRated || activeUserId === trip?.user?.id}
+                            />
+                        </Stack>
                     </div>
-                    <div className='trip-description'>
-                        <p className="intro">{trip.description}</p>
-                    </div>
-                    <TripDays days={days}/>
                 </div>
-                <TripDetails
-                    trip={trip}
-                    averageRating={averageRating}
-                    handleRatingChange={handleRatingChange}
-                    activeUserId={activeUserId}
-                    hasRated={hasRated}
-                />
+                <div className='trip-body'>
+                    <div className='trip-description'>
+                        <p className="intro-text">{trip.description}</p>
+                        <TripDays days={days} />
+                    </div>
+                    <div className="trip-details">
+                        <TripSummary trip={trip} />
+                    </div>
+                </div>
             </div>
             <div className='comments'>
                 <TripComments
