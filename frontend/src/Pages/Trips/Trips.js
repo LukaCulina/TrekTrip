@@ -6,10 +6,11 @@ import { MenuItem, Select, FormControl, InputLabel, Button } from '@mui/material
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 import { Spinner } from '../../Components/Spinner/Spinner';
+import Filter from '../../Components/Filter/Filter';
 import './Trips.css';
 
 const Trips = () => {
-    const {t} = useTranslation();
+    const { t } = useTranslation();
     const [trips, setTrips] = useState([]);
     const [originalTrips, setOriginalTrips] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -27,14 +28,14 @@ const Trips = () => {
                 const response = await tripService.getAllTrips();
                 setTrips(response.data);
                 setOriginalTrips(response.data);
-    
+
                 const uniqueCountries = [...new Set(
                     response.data
                         .filter(trip => trip.locations[0]?.country?.name)
                         .map(trip => trip.locations[0].country.name)
                 )].sort();
                 setCountries(uniqueCountries.map(name => ({ name })));
-    
+
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching trips:', error);
@@ -42,7 +43,7 @@ const Trips = () => {
                 setLoading(false);
             }
         };
-    
+
         fetchData();
     }, []);
 
@@ -87,7 +88,7 @@ const Trips = () => {
         setSelectedMonth(month);
         setFiltersApplied(true);
     };
-  
+
     const handleClearFilters = () => {
         setTrips(originalTrips);
         setSortCriteria('');
@@ -104,15 +105,33 @@ const Trips = () => {
         return <div>Error: {error}</div>;
     }
 
-    let displayedTrips = filtersApplied 
-    ? sortTrips(
-        trips.filter(trip => 
-            (!selectedCountry || trip.locations[0].country.name === selectedCountry) && 
-            (!selectedMonth || trip.tripMonth === selectedMonth)
-        ), 
-        sortCriteria
-    ) 
-    : trips;
+    let displayedTrips = filtersApplied
+        ? sortTrips(
+            trips.filter(trip =>
+                (!selectedCountry || trip.locations[0].country.name === selectedCountry) &&
+                (!selectedMonth || trip.tripMonth === selectedMonth)
+            ),
+            sortCriteria
+        )
+        : trips;
+
+    const sortOptions = [
+        { value: 'highestRated', label: t('filters.highestRated') },
+        { value: 'longest', label: t('filters.longest') },
+        { value: 'shortest', label: t('filters.shortest') },
+        { value: 'mostExpensive', label: t('filters.mostExpensive') },
+        { value: 'leastExpensive', label: t('filters.leastExpensive') },
+    ];
+
+    const countryOptions = countries.map(c => ({
+        value: c.name,
+        label: c.name
+    }));
+
+    const monthOptions = months.map(month => ({
+        value: month,
+        label: month
+    }));
 
     return (
         <div className="trips">
@@ -120,45 +139,24 @@ const Trips = () => {
                 <title>{t('sitenames.trips')}</title>
             </Helmet>
             <div className="filters">
-                <FormControl variant="outlined" className="dropdown" size="small">
-                    <InputLabel>{t('filters.sort')}</InputLabel>
-                    <Select
-                        value={sortCriteria}
-                        onChange={handleSortChange}
-                        label="Sort"
-                    >
-                        <MenuItem value="highestRated">{t('filters.highestRated')}</MenuItem>
-                        <MenuItem value="longest">{t('filters.longest')}</MenuItem>
-                        <MenuItem value="shortest">{t('filters.shortest')}</MenuItem>
-                        <MenuItem value="mostExpensive">{t('filters.mostExpensive')}</MenuItem>
-                        <MenuItem value="leastExpensive">{t('filters.leastExpensive')}</MenuItem>
-                    </Select>
-                </FormControl>
-                <FormControl variant="outlined" className="dropdown" size="small">
-                    <InputLabel>{t('filters.country')}</InputLabel>
-                    <Select
-                        value={selectedCountry}
-                        onChange={handleCountryChange}
-                        label="Country"
-                        placeholder={t('filters.countryPlaceholder')}
-                    >
-                        {countries.map((country) => (
-                            <MenuItem key={country.id} value={country.name}>{country.name}</MenuItem>
-                        ))}
-                    </Select>
-                </FormControl>
-                <FormControl variant="outlined" className="dropdown" size="small">
-                    <InputLabel>{t('filters.month')}</InputLabel>
-                    <Select
-                        value={selectedMonth}
-                        onChange={handleMonthChange}
-                        label="Month"
-                    >
-                        {months.map((month, index) => (
-                            <MenuItem key={index} value={month}>{month}</MenuItem>
-                        ))}
-                    </Select>
-            </FormControl>
+                <Filter
+                    label={t('filters.sort')}
+                    value={sortCriteria}
+                    onChange={handleSortChange}
+                    options={sortOptions}
+                />
+                <Filter
+                    label={t('filters.country')}
+                    value={selectedCountry}
+                    onChange={handleCountryChange}
+                    options={countryOptions}
+                />
+                <Filter
+                    label={t('filters.month')}
+                    value={selectedMonth}
+                    onChange={handleMonthChange}
+                    options={monthOptions}
+                />
                 <Button variant="contained" color="secondary" onClick={handleClearFilters}>
                     {t('filters.clearFilters')}
                 </Button>

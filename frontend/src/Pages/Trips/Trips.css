@@ -2,7 +2,9 @@
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: row;
-  padding: 20px;
+  justify-content: space-between;
+  width: 85%;
+  margin: 0 auto;
 }
 
 .filters {
@@ -15,7 +17,7 @@
 }
 
 .filters button {
-  width: 70%;
+  width: 90%;
 }
 
 .destinations {
@@ -39,16 +41,11 @@
   }
 
   .filters {
-    width: 90%;
+    width: 100%;
     min-width: unset;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-  }
-
-  .filters button {
-    width: 100%;
-    margin-bottom: 10px;
   }
 }
 

@@ -1,4 +1,4 @@
-{   
+{
     "sitenames": {
         "home": "Trektrip",
         "trips": "Putovanja",
@@ -57,10 +57,10 @@
         "addTrip": "Dodaj put"
     },
     "filters": {
-        "sort": "Sortiraj",
+        "sort": "Sortirajte",
         "all": "Svi",
-        "country": "Država",
-        "month": "Mjesec",
+        "country": "Odaberite državu",
+        "month": "Odaberite mjesec",
         "highestRated": "Najbolje ocijenjeni",
         "longest": "Najduži",
         "shortest": "Najkraći",
