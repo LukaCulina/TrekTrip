@@ -138,15 +138,19 @@
     .hamburger_icon{
         display: block;
     }
+
     .header{
-        padding-top: 5px;
+        padding: 5px 0;
     }
+
     .header_title{
         margin: 5px;
     }
+
     .navbar{
         display: none;
     }
+
     .buttons{
         display: none;
     }
@@ -175,8 +179,8 @@
     .nav_button{
         font-size: 2rem;
     }
+
     .auth_button{
         font-size: 1.5rem;
     }
 }
-
