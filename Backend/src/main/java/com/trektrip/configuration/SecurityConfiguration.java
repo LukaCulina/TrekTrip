@@ -40,6 +40,7 @@ public class SecurityConfiguration {
                     auth.requestMatchers(
                             "/auth/login",
                             "/auth/refreshToken",
+                            "/auth/logout",
                             "/user/register",
                             "user/all",
                             "/userRole",
@@ -48,7 +49,6 @@ public class SecurityConfiguration {
                             "/comment",
                             "/country",
                             "/country/**",
-                            "/image",
                             "/image/**",
                             "/pin",
                             "/day",
@@ -58,8 +58,7 @@ public class SecurityConfiguration {
                             "/location"
                     ).permitAll();
 
-                    auth.requestMatchers("/image", "/image/**").authenticated();
-                    auth.requestMatchers("/auth/logout").hasRole("USER");
+                    auth.requestMatchers("/image").authenticated();
                     auth.anyRequest().authenticated();
                 })
                 .authenticationProvider(authenticationProvider())
