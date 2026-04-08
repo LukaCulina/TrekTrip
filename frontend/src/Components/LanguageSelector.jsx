@@ -12,7 +12,7 @@ const LanguageSelector = () => {
   return (
     <FormControl size="small" sx={{ minWidth: 70 }}>
       <Select
-        value={localStorage.getItem('language')}
+        value={i18n.language}
         onChange={handleChange}
         displayEmpty
         variant="outlined"
