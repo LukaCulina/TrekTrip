@@ -14,11 +14,11 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("https://trek-trip.vercel.app", "https://LukaCulina.github.io", "http://localhost:3000","http://localhost:3003","http://localhost:3001")
+                        .allowedOrigins("https://trek-trip.vercel.app", "http://localhost:5173/", "http://localhost:5174/", "http://localhost:5175/")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("Authorization", "Content-Type", "Accept")
                         .allowCredentials(true)
-                        .maxAge(3600); // You can customize the max age as needed
+                        .maxAge(3600);
             }
         };
     }

@@ -16,7 +16,7 @@ const HighlightedTripCard = ({ trip }) => {
 
   return (
     <div className="featured-trip-card">
-      <img src={trip && trip.images && trip.images.length > 0 ? process.env.PUBLIC_URL + trip?.images[0].url : ''} alt={trip?.title} className="trip-image" />
+      <img src={trip && trip.images && trip.images.length > 0 ? trip?.images[0].url : ''} alt={trip?.title} className="trip-image" />
       <div className="trip-info">
         <h3>{trip?.title}</h3>
         <Stack spacing={1}>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import HighlightedTripCard from '../../Components/HighlightedTripCard/HighlightedTripCard';
+import HighlightedTripCard from '../HighlightedTripCard/HighlightedTripCard';
 
 const FeaturedTrips = ({ trips }) => {
     return (
