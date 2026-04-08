@@ -36,6 +36,11 @@ public class DayController {
         }
     }
 
+    @GetMapping("/trip/{tripId}")
+    public ResponseEntity<List<Day>> getDaysByTripId(@PathVariable Long tripId) {
+        return ResponseEntity.ok(dayRepository.findByTripId(tripId));
+    }
+
     @PostMapping
     public ResponseEntity<Long> createDay(@RequestBody DayRequestDTO dayRequest) {
         Day day = new Day();

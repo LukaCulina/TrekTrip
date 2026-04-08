@@ -69,16 +69,8 @@ const Trip = () => {
 
         const fetchDaysData = async () => {
             try {
-                const daysResponse = await axiosInstance.get(`/day/all`);
-                console.log('Received all days data:', daysResponse.data);
-                console.log(id)
-                console.log(daysResponse.data[0].trip.id)
-                console.log('Current trip ID type:', typeof id, id);
-                console.log('Day trip ID type:', typeof daysResponse.data[0].trip.id, daysResponse.data[0].trip.id);
-
-                const filteredDays = daysResponse.data.filter(day => day.trip.id === Number(id));
-                setDays(filteredDays)
-                console.log('Filtered days data:', filteredDays);
+                const daysResponse = await axiosInstance.get(`/day/trip/${id}`);
+                setDays(daysResponse.data);
             } catch (error) {
                 console.error('Error fetching days:', error);
             }
