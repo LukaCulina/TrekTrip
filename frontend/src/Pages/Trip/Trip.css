@@ -3,6 +3,11 @@
   margin: 0 auto;
 }
 
+.trip-page h1 {
+  text-align: center;
+  margin: 20px;
+  font-size: 6vh;
+
 .main-image {
   height: 600px;
   background-size: cover;
@@ -25,12 +30,9 @@
 
 .trip-intro {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-}
-
-.trip-rating {
-  width: 25%;
+  gap: 30px;
 }
 
 .trip h1 {
