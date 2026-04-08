@@ -31,7 +31,7 @@
 .nav_button{
     background: none;
     border: none;
-    font-size: 3vw;
+    font-size: 1.2rem;
     cursor: pointer;
     color: #115fb4;
     padding: 5px 15px;
@@ -174,10 +174,6 @@
 }
 
 @media(min-width:1025px){
-    .nav_button{
-        font-size: 2rem;
-    }
-
     .auth_button{
         font-size: 1.5rem;
     }
