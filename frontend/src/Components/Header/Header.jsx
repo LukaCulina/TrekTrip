@@ -88,14 +88,7 @@ const Header = () => {
                         </button>
                     </Link>
                 )}
-                 <select
-                    value={localStorage.getItem('language')}
-                    onChange={e => changeLanguage(e.target.value)}
-                    className="language-dropdown"
-                    >
-                    <option value="hr">HR</option>
-                    <option value="en">EN</option>
-                </select>
+                 <LanguageSelector />
             </nav>
 
             {isMobileMenuOpen && (
