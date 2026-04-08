@@ -91,6 +91,8 @@
     "name": "Title",
     "description": "Description",
     "length": "Duration in Days",
+    "dayTitle": "Day title",
+    "dayText": "Describe what you plan to do on this day",
     "price": "Price",
     "month": "Travel Month",
     "submit": "Add Trip",
