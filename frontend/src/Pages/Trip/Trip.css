@@ -16,7 +16,7 @@
 }
 
 .trip {
-  margin: 25px 0;
+  margin: 40px 0;
 }
 
 .intro-text {
@@ -90,10 +90,6 @@
   margin-bottom: 5px;
 }
 
-.comments {
-  background-color: #f8f8f8;
-}
-
 @media (max-width: 768px) {
   .main-image {
     height: 250px;
@@ -103,6 +99,10 @@
     width: auto;
   }
 
+  .trip {
+    margin: 25px 0;
+  }
+  
   .trip-body {
     flex-direction: column;
   }
