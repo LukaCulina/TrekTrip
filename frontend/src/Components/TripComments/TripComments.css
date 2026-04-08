@@ -1,38 +1,37 @@
 .comments-section {
-padding: 20px;
-width: 80%;
-margin: 0 auto;
+    margin: 0 auto;
 }
 
 .comment {
-margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 .commentDisplayUsername{
-font-weight: bold;
+    font-weight: bold;
 }
 
 .commentInputSection{
-display: flex;
-flex-direction: column;
-width: 100%;
-
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 .commentSectionTitle{
-color: #486284;
-}
-
-.singleCommentContainer{
-border: 1px solid black;
-border-radius: 10px;
-margin-bottom: 10px;
-padding: 0 10px;
-width: 100%;
+    color: rgb(17, 95, 180);
 }
 
 .commentsListContainer{
     padding: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
+}
+
+.singleCommentContainer{
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 50%;
+}
+
+.singleCommentContainer p {
+    padding: 0 10px:
 }
