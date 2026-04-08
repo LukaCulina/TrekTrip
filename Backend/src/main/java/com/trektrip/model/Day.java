@@ -23,8 +23,8 @@ public class Day {
 
     @ManyToOne
     @JoinColumn(name = "trip_id", referencedColumnName = "id")
+    @JsonBackReference
     private Trip trip;
-
 
     public Day(Long id, String title, String text) {
         this.id = id;

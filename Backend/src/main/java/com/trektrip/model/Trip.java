@@ -58,6 +58,10 @@ public class Trip {
     @JsonManagedReference
     private List<Comment> comments = new ArrayList<>();
 
+    @OneToMany(mappedBy = "trip", fetch = FetchType.EAGER)
+    @JsonManagedReference
+    private List<Day> days = new ArrayList<>();
+
     private boolean isPublic;
 
     public Trip(Long id, String title, String description, int lengthInDays, boolean isPublic) {
