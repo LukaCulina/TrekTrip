@@ -4,44 +4,30 @@ import com.trektrip.model.Image;
 import com.trektrip.model.Trip;
 import com.trektrip.repository.ImageRepository;
 import com.trektrip.repository.TripRepository;
-import com.trektrip.utils.FilesUtil;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.beans.factory.annotation.Value;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
-import org.springframework.beans.factory.annotation.Value;
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
+import java.util.Map;
 
 @Service
 public class ImageServiceImpl implements ImageService {
 
     @Autowired
     private ImageRepository imageRepository;
+    
     @Autowired
     private TripRepository tripRepository;
+
     @Autowired
-    private FilesUtil filesUtil;
-
-    @Value("${upload.path}")
-    private String uploadPath; // Path to directory where images will be stored
-
-//    public ImageServiceImpl(ImageRepository imageRepository, TripRepository tripRepository) {
-//        this.imageRepository = imageRepository;
-//        this.tripRepository = tripRepository;
-//    }
-
-    public void setUploadPath(String uploadPath) {
-        this.uploadPath = uploadPath;
-    }
+    private Cloudinary cloudinary;    
 
     @Override
     public List<Image> getAllImages() {
@@ -77,19 +63,16 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public Image handleImageUpload(MultipartFile file) throws IOException {
-        String filename = UUID.randomUUID().toString(); // Generate a unique filename
-        String fileExtension = getFileExtension(file.getOriginalFilename());
-        String filePath = uploadPath + File.separator + filename + fileExtension;
-        Path destination = Paths.get(filePath);
-        filesUtil.copy(file.getInputStream(), destination);
+        Map uploadResult = cloudinary.uploader().upload(
+            file.getBytes(),
+            ObjectUtils.emptyMap()
+        );
 
-        String imageUrl = "/uploads/" + filename + fileExtension; // URL to access the image
+        String imageUrl = (String) uploadResult.get("secure_url");
         Image image = new Image();
         image.setUrl(imageUrl);
-
         return imageRepository.save(image);
     }
-
 
     @Override
     public void addImageToTrip(Long tripId, Long imageId) {
