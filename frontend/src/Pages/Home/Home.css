@@ -18,13 +18,13 @@
   color: #666;
 }
 
-.featured-trips {
-  margin: 60px;
+
+.homepage h2 {
+  font-size: 2em;
 }
 
-.featured-trips h2 {
-  font-size: 2em;
-  margin-bottom: 50px;
+.featured-trips {
+  margin-bottom: 60px;
 }
 
 .trip-cards {
