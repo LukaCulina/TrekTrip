@@ -18,9 +18,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.http.HttpMethod;
 
 import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
-
 
 @Configuration
 @EnableWebSecurity
@@ -37,29 +37,7 @@ public class SecurityConfiguration {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers(
-                            "/auth/login",
-                            "/auth/refreshToken",
-                            "/auth/logout",
-                            "/user/register",
-                            "user/all",
-                            "/userRole",
-                            "/trip",
-                            "/trip/**",
-                            "/comment",
-                            "/country",
-                            "/country/**",
-                            "/image/**",
-                            "/pin",
-                            "/day",
-                            "/day/**",
-                            "/day/all",
-                            "/rating",
-                            "/location"
-                    ).permitAll();
-
-                    auth.requestMatchers("/image").authenticated();
-                    auth.anyRequest().authenticated();
+                    auth.anyRequest().permitAll();
                 })
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
