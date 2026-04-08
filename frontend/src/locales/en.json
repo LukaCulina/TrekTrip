@@ -11,6 +11,7 @@
   "home": {
     "title": "Find your next adventure",
     "subtitle": "Your reliable compass through the maze of travel, illuminating hidden gems and creating adventures on demand with precision and passion",
+    "searchPlaceholder": "Search trips",
     "tripsTitle": "Featured Trips"
   },
   "language": {
