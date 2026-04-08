@@ -4,6 +4,7 @@ import com.trektrip.model.Image;
 import com.trektrip.model.Trip;
 import com.trektrip.repository.ImageRepository;
 import com.trektrip.repository.TripRepository;
+import com.cloudinary.Cloudinary;
 import jakarta.persistence.Access;
 import jakarta.persistence.EntityNotFoundException;
 import jdk.jshell.execution.FailOverExecutionControlProvider;
