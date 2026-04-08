@@ -20,6 +20,7 @@ public class DayController {
 
     private final DayService dayService;
     private final TripRepository tripRepository;
+    private final DayRepository dayRepository;
 
     @GetMapping("/all")
     public List<Day> getAllDays() {
