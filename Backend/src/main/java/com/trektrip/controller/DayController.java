@@ -4,6 +4,7 @@ import com.trektrip.dto.DayRequestDTO;
 import com.trektrip.model.Day;
 import com.trektrip.model.Trip;
 import com.trektrip.repository.TripRepository;
+import com.trektrip.repository.DayRepository;
 import com.trektrip.service.DayService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
