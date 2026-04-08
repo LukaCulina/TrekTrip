@@ -54,6 +54,7 @@ const Profile = () => {
           console.error('Error fetching user:', error);
         }
       };
+      fetchData();
     }
   }, [isLoggedIn, navigate]);
 
