@@ -2,14 +2,12 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import axios from 'axios';
+import axiosInstance from '../../axios/axiosInstance';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
 import './Auth.css';
 
 const Login = () => {
-
-  axios.defaults.baseURL = 'https://dark-ardis-lukaculina-bde5dd25.koyeb.app/';
 
   const {t} = useTranslation();
 
@@ -41,7 +39,7 @@ const Login = () => {
     const { username, password } = formData;
 
     try {
-        const response = await axios.post('/auth/login', { username, password });
+        const response = await axiosInstance.post('/auth/login', { username, password });
         
         const accessToken = response.data.accessToken;
         
