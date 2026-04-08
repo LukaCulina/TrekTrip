@@ -1,9 +1,9 @@
 import "./SearchBar.css";
 
-const SearchBar = ({ value, onChange, onSearch, trips }) => {
+const SearchBar = ({ value, placeholder, onChange, onSearch, trips }) => {
     return (
         <div>
-            <input className="searchbar" placeholder="..." type="text" value={value} onChange={onChange} />
+            <input className="searchbar" placeholder={placeholder} type="text" value={value} onChange={onChange} />
             <div className="dropdown">
                 {trips.filter(trip => {
                     const searchTerm = value.toLowerCase();
