@@ -37,19 +37,18 @@ public class DayController {
     }
 
     @PostMapping
-    public ResponseEntity<Day> createDay(@RequestBody DayRequestDTO dayRequest) {
+    public ResponseEntity<Long> createDay(@RequestBody DayRequestDTO dayRequest) {
         Day day = new Day();
         day.setTitle(dayRequest.getTitle());
         day.setText(dayRequest.getText());
 
         Trip trip = tripRepository.findById(dayRequest.getTripId())
-                .orElseThrow(() -> new RuntimeException("Trip not found"));
+                .orElseThrow(() -> new RuntimeException("Trip not found with id: " + dayRequest.getTripId()));
         day.setTrip(trip);
 
         Day createdDay = dayService.createDay(day);
-        return new ResponseEntity<>(createdDay, HttpStatus.CREATED);
+        return new ResponseEntity<>(createdDay.getId(), HttpStatus.CREATED);
     }
-
 
     @PutMapping("/{id}")
     public ResponseEntity<Day> updateDay(@RequestBody Day day, @PathVariable Long id) {
