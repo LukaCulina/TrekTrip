@@ -4,6 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import axiosInstance from '../../axios/axiosInstance'; 
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { } from '../LanguageSelector';
 import "./Header.css";
 
 const Header = () => {
@@ -40,10 +41,6 @@ const Header = () => {
 
     const handleMouseLeave = () => {
         setIsDropdownOpen(false);
-    };
-
-    const changeLanguage = (lng) => {
-        i18n.changeLanguage(lng);
     };
 
     return (
@@ -120,13 +117,7 @@ const Header = () => {
                         <button className="nav_button">{t('header.login')}</button>
                     </Link>
                 )}
-                <select
-                    value={localStorage.getItem('language')}
-                    onChange={e => changeLanguage(e.target.value)}
-                    className="language-dropdown">
-                    <option value="hr">HR</option>
-                    <option value="en">EN</option>
-                </select>
+                <LanguageSelector />
             </div>
             )}
         </header>  
