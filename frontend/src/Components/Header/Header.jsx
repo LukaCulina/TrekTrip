@@ -4,7 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import axiosInstance from '../../axios/axiosInstance'; 
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import LanguageSelector from '../LanguageSelector';
+import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import "./Header.css";
 
 const Header = () => {
