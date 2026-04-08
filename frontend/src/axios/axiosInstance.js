@@ -47,26 +47,21 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
-    if (error.response && error.response.status === 403) {
-      if (retryCounter < 3) { // Set the maximum number of retries
+    const originalRequest = error.config;
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+      if (retryCounter < 3) {
         retryCounter++;
         try {
           const accessToken = await refreshAccessToken();
-          // Retry the original request with the new access token
-          error.config.headers.Authorization = `Bearer ${accessToken}`;
-          return axiosInstance.request(error.config);
+          originalRequest.headers.Authorization = `Bearer ${accessToken}`;
+          return axiosInstance(originalRequest);
         } catch (refreshError) {
-          // Handle refresh error
-          console.error('Error refreshing access token:', refreshError);
-          throw refreshError;
+          console.error('Refresh failed:', refreshError);
+          return Promise.reject(refreshError);
         }
-      } else {
-        // If reached the maximum number of retries, handle the error or log it
-        console.error('Maximum retry attempts reached');
-        return Promise.reject(error);
       }
     }
-    // For other errors, just return the error
     return Promise.reject(error);
   }
 );
