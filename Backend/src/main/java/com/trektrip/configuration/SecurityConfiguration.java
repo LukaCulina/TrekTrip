@@ -57,6 +57,8 @@ public class SecurityConfiguration {
                             "/rating",
                             "/location"
                     ).permitAll();
+
+                    auth.requestMatchers("/image", "/image/**").authenticated();
                     auth.requestMatchers("/auth/logout").hasRole("USER");
                     auth.anyRequest().authenticated();
                 })
@@ -64,7 +66,6 @@ public class SecurityConfiguration {
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
-
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
