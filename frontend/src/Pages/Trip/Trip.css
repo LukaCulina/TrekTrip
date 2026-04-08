@@ -5,7 +5,7 @@
 
 .trip-page h1 {
   text-align: center;
-  margin: 20px;
+  margin: 10px 0;
   font-size: 6vh;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .trip {
-  margin: 20px 0;
+  margin: 25px 0;
 }
 
 .intro-text {
@@ -44,7 +44,6 @@
 .trip-body {
   display: flex;
   justify-content: space-between;
-  margin-top: 15px;
 }
 
 .trip-description {
