@@ -79,7 +79,7 @@ const Home = () => {
             <header className="homepage-header">
                 <h1>{t('home.title')}</h1>
                 <p>{t('home.subtitle')}</p>
-                <SearchBar value={value} onChange={onChange} onSearch={onSearch} trips={trips} />
+                <SearchBar value={value} placeholder={t('search.placeholder')} onChange={onChange} onSearch={onSearch} trips={trips} />
             </header>
 
             <section><h2>{t('home.tripsTitle')}</h2>
