@@ -33,15 +33,15 @@ const AddTrip = () => {
   const userId = localStorage.getItem('userId');
 
   useEffect(() => {
-    
+
     const fetchCountries = async () => {
-        try {
-            const response = await countryService.getAllCountries();
-            const sortedCountries = response.data.sort((a, b) => a.name.localeCompare(b.name));
-            setCountries(sortedCountries);
-        } catch (error) {
-            console.error('Error fetching countries:', error);
-        }
+      try {
+        const response = await countryService.getAllCountries();
+        const sortedCountries = response.data.sort((a, b) => a.name.localeCompare(b.name));
+        setCountries(sortedCountries);
+      } catch (error) {
+        console.error('Error fetching countries:', error);
+      }
     };
 
     fetchCountries();
@@ -52,7 +52,7 @@ const AddTrip = () => {
       try {
         if (selectedCountry) {
           const countryCode = countries.find(country => country.name === selectedCountry)?.code;
-            if (countryCode) {
+          if (countryCode) {
             const username = 'luka58';
             const apiUrl = `http://api.geonames.org/searchJSON?country=${encodeURIComponent(countryCode)}&username=${username}`;
 
@@ -65,7 +65,7 @@ const AddTrip = () => {
               name: location.name
             }));
             const sortedLocations = locations.sort((a, b) => a.name.localeCompare(b.name));
-            
+
             console.log(sortedLocations);
             setLocations(sortedLocations);
           }
@@ -84,7 +84,7 @@ const AddTrip = () => {
       ...prevData,
       [name]: type === 'checkbox' ? checked : files ? Array.from(files) : value
     }));
-  
+
     if (name === 'lengthInDays') {
       const length = parseInt(value, 10);
       if (!isNaN(length)) {
@@ -102,7 +102,7 @@ const AddTrip = () => {
     e.preventDefault();
     setAdding(true);
     setError('');
-  
+
     try {
       const imageIds = [];
 
@@ -110,19 +110,15 @@ const AddTrip = () => {
         for (const image of formData.images) {
           const imageFormData = new FormData();
           imageFormData.append('file', image);
-  
-          const imageRes = await axiosInstance.post('/image', imageFormData, {
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          });
-  
+
+          const imageRes = await axiosInstance.post('/image', imageFormData);
+
           const imageId = imageRes.data.id;
-  
+
           imageIds.push(imageId);
         }
       }
-      
+
       const locationIds = [];
       if (selectedLocations.length > 0) {
         const countryId = countries.find(country => country.name === selectedCountry)?.id;
@@ -130,7 +126,7 @@ const AddTrip = () => {
         for (const locationName of selectedLocations) {
           const locationData = {
             destination: locationName,
-            country: {id: countryId},
+            country: { id: countryId },
           };
           const response = await axiosInstance.post('/location', locationData);
           locationIds.push(response.data.id);
@@ -150,28 +146,28 @@ const AddTrip = () => {
         imageIds: imageIds,
         locationIds: locationIds,
       };
-  
+
       console.log(tripData.imageIds);
-      
+
       const response = await tripService.createTrip(tripData);
-  
+
       console.log('Trip added successfully:', response.data);
 
       try {
         // Iterate over each day in the array
         for (const dayData of days) {
-            // Make a POST request to create a new day
-            await axiosInstance.post('/day', {
-                title: dayData.title,
-                text: dayData.text,
-                tripId: response.data.id
-            });
+          // Make a POST request to create a new day
+          await axiosInstance.post('/day', {
+            title: dayData.title,
+            text: dayData.text,
+            tripId: response.data.id
+          });
         }
         console.log('All days created successfully');
-    
-    } catch (error) {
+
+      } catch (error) {
         console.error('Error creating days:', error);
-    }  
+      }
       navigate('/putovanja');
     } catch (error) {
       console.error('Adding trip failed:', error);
@@ -180,14 +176,14 @@ const AddTrip = () => {
       setAdding(false);
     }
   };
-  
+
   const handleCountryChange = (event) => {
     const country = event.target.value;
     setSelectedCountry(country);
     const countryId = countries.find(country => country.name === selectedCountry)?.id;
     console.log(countryId)
   };
-  
+
   const handleLocationChange = (event) => {
     setSelectedLocations(event.target.value);
     console.log(days)
@@ -199,7 +195,7 @@ const AddTrip = () => {
       newDays[index][field] = value;
       return newDays;
     });
-  }; 
+  };
 
   const handleClearAll = () => {
     setSelectedCountry('');
@@ -222,32 +218,32 @@ const AddTrip = () => {
           <textarea name="description" value={formData.description} onChange={handleChange} required />
         </label>
         <label>
-        {t('addTrip.length')}
-        <input type="number" name="lengthInDays" value={formData.lengthInDays} onChange={handleChange} required />
-      </label>
-      {/* Render day inputs dynamically */}
-      {days.map((day, index) => (
-        <div key={index} className="day-input">
-          <h3>Day {day.dayNumber}</h3>
-          <label>
-            {t('addTrip.dayTitle')}
-            <input
-              type="text"
-              value={day.title}
-              onChange={(e) => handleDayChange(index, 'title', e.target.value)}
-              required
-            />
-          </label>
-          <label>
-            {t('addTrip.dayText')}
-            <textarea
-              value={day.text}
-              onChange={(e) => handleDayChange(index, 'text', e.target.value)}
-              required
-            />
-          </label>
-        </div>
-      ))}
+          {t('addTrip.length')}
+          <input type="number" name="lengthInDays" value={formData.lengthInDays} onChange={handleChange} required />
+        </label>
+        {/* Render day inputs dynamically */}
+        {days.map((day, index) => (
+          <div key={index} className="day-input">
+            <h3>Day {day.dayNumber}</h3>
+            <label>
+              {t('addTrip.dayTitle')}
+              <input
+                type="text"
+                value={day.title}
+                onChange={(e) => handleDayChange(index, 'title', e.target.value)}
+                required
+              />
+            </label>
+            <label>
+              {t('addTrip.dayText')}
+              <textarea
+                value={day.text}
+                onChange={(e) => handleDayChange(index, 'text', e.target.value)}
+                required
+              />
+            </label>
+          </div>
+        ))}
         <label>
           {t('addTrip.price')}
           <input type="number" name="price" value={formData.price} onChange={handleChange} required />
@@ -264,13 +260,13 @@ const AddTrip = () => {
         <FormControl variant="outlined" className="dropdown">
           <InputLabel>{t('addTrip.country')}</InputLabel>
           <Select
-              value={selectedCountry}
-              onChange={handleCountryChange}
-              label="Country"
+            value={selectedCountry}
+            onChange={handleCountryChange}
+            label="Country"
           >
-              {countries.map((country) => (
-                  <MenuItem key={country.id} value={country.name}>{country.name}</MenuItem>
-              ))}
+            {countries.map((country) => (
+              <MenuItem key={country.id} value={country.name}>{country.name}</MenuItem>
+            ))}
           </Select>
         </FormControl>
         {locations.length > 0 && (
