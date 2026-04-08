@@ -158,7 +158,7 @@ const Trip = () => {
                 </div>
             </div>
             <div className="main-image"
-                style={{ backgroundImage: `url(${trip && trip.images && trip.images.length > 0 ? process.env.PUBLIC_URL + trip.images[0].url : ''})` }}>
+                style={{ backgroundImage: `url(${trip && trip.images && trip.images.length > 0 ? trip.images[0].url : ''})` }}>
             </div>
 
             <div className="trip">
