@@ -82,9 +82,11 @@
     "comments": "Comments"
   },
   "editProfile": {
+    "title": "Profile editing",
     "username": "Username",
     "description": "Description",
-    "profile-photo": "Profile Photo",
+    "profilePhoto": "Profile Photo",
+    "addPhoto": "Select a photo",
     "editButton": "Edit Profile"
   },
   "addTrip": {

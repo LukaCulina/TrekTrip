@@ -82,9 +82,11 @@
         "comments": "Komentari"
     },
     "editProfile": {
+        "title": "Uređivanje profila",
         "username": "Korisničko ime",
         "description": "Opis",
-        "profile-photo": "Profilna slika",
+        "profilePhoto": "Profilna slika",
+        "addPhoto": "Odaberite sliku",
         "editButton": "Uredi profil"
     },
     "addTrip": {

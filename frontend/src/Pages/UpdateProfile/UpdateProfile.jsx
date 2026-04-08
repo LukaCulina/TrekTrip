@@ -91,10 +91,10 @@ const UpdateProfile = () => {
           <textarea name="description" value={formData.description} onChange={handleChange} />
         </div>
         <div className="formField">
-          <label>{t('editProfile.profile-photo')}</label>
+          <label>{t('editProfile.profilPhoto')}</label>
           <div className="uploadArea" onClick={() => document.getElementById('fileInput').click()}>
             {formData.image && <img src={URL.createObjectURL(formData.image)} alt="preview" />}
-            <p>{formData.image ? formData.image.name : 'Kliknite za odabir slike'}</p>
+            <p>{formData.image ? formData.image.name : t('editProfile.addPhoto')}</p>
             <input type="file" id="fileInput" style={{ display: 'none' }} onChange={handleImageChange} />
           </div>
         </div>
