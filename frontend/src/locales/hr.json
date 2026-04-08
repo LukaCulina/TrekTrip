@@ -91,6 +91,8 @@
         "name": "Naslov",
         "description": "Opis",
         "length": "Trajanje u danima",
+        "dayTitle": "Naziv dana",
+        "dayText": "Opišite što planirate raditi taj dan",
         "price": "Cijena",
         "month": "Mjesec putovanja",
         "submit": "Dodaj Putovanje",
