@@ -3,6 +3,7 @@ package com.trektrip.controller;
 import com.trektrip.dto.DayRequestDTO;
 import com.trektrip.model.Day;
 import com.trektrip.model.Trip;
+import com.trektrip.repository.TripRepository;
 import com.trektrip.service.DayService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ import java.util.Optional;
 public class DayController {
 
     private final DayService dayService;
+    private final TripRepository tripRepository;
 
     @GetMapping("/all")
     public List<Day> getAllDays() {
@@ -40,8 +42,8 @@ public class DayController {
         day.setTitle(dayRequest.getTitle());
         day.setText(dayRequest.getText());
 
-        Trip trip = new Trip();
-        trip.setId(dayRequest.getTripId());
+        Trip trip = tripRepository.findById(dayRequest.getTripId())
+                .orElseThrow(() -> new RuntimeException("Trip not found"));
         day.setTrip(trip);
 
         Day createdDay = dayService.createDay(day);
