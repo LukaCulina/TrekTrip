@@ -6,6 +6,7 @@ import axiosInstance from '../../axios/axiosInstance';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
 import { Button } from "@mui/material";
+import { Spinner } from '../../Components/Spinner/Spinner';
 import HighlightedTripCard from '../../Components/HighlightedTripCard/HighlightedTripCard';
 import './Profile.css';
 
@@ -17,6 +18,8 @@ const Profile = () => {
   const navigate = useNavigate();
   const { isLoggedIn } = useAuth();
   const [topTrips, setTopTrips] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (!isLoggedIn) {
@@ -24,6 +27,7 @@ const Profile = () => {
     } else {
       const fetchData = async () => {
         try {
+          setLoading(true);
           const username = localStorage.getItem('username');
           const response = await axiosInstance.get(`/user/all`);
           const users = response.data;
@@ -51,7 +55,10 @@ const Profile = () => {
             console.error('Logged-in user not found');
           }
         } catch (error) {
+          setError('Greška pri učitavanju profila');
           console.error('Error fetching user:', error);
+        } finally {
+          setLoading(false);
         }
       };
       fetchData();
@@ -64,51 +71,51 @@ const Profile = () => {
     return total / ratings.length;
   };
 
+  if (loading) return <Spinner />;
+  if (error) return <div>{error}</div>;
+  if (!user) return <div>Profil nije pronađen</div>;
+
   return (
     <div>
       <Helmet>
         <title>{t('sitenames.profile')}</title>
       </Helmet>
-      {user ? (
-        <div className="profile-page">
-          <div className="profile-info">
-            <div className="profile-details">
-              <h1>{user.username}</h1>
-              <div className='profile-photo'>
-                <img
-                  src={user.image && user.image.url ? `${user.image.url}` : 'https://static.vecteezy.com/system/resources/previews/036/280/651/non_2x/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-illustration-vector.jpg'}
-                  alt="Profile"
-                  className="profile-pic"
-                />
-              </div>
-              <div className="profile-buttons">
-                <Link to='/uredi-profil'>
-                  <Button>{t('profile.editProfile')}</Button>
-                </Link>
-                <Link to='/dodaj-put'>
-                  <Button>{t('profile.addTrip')}</Button>
-                </Link>
-              </div>
+      <div className="profile-page">
+        <div className="profile-info">
+          <div className="profile-details">
+            <h1>{user.username}</h1>
+            <div className='profile-photo'>
+              <img
+                src={user.image && user.image.url ? `${user.image.url}` : 'https://static.vecteezy.com/system/resources/previews/036/280/651/non_2x/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-illustration-vector.jpg'}
+                alt="Profile"
+                className="profile-pic"
+              />
             </div>
-            <div className="about-me">
-              <h2>{t('profile.about')}</h2>
-              <p>{user.description}</p>
+            <div className="profile-buttons">
+              <Link to='/uredi-profil'>
+                <Button>{t('profile.editProfile')}</Button>
+              </Link>
+              <Link to='/dodaj-put'>
+                <Button>{t('profile.addTrip')}</Button>
+              </Link>
             </div>
           </div>
-          <div className="my-trips">
-            <h2>{t('profile.trips')}</h2>
-            <div className="trip-cards">
-              {topTrips.map((trip) => (
-                <Link key={trip.id} to={`/putovanja/${trip.id}`}>
-                  <HighlightedTripCard trip={trip} />
-                </Link>
-              ))}
-            </div>
+          <div className="about-me">
+            <h2>{t('profile.about')}</h2>
+            <p>{user.description}</p>
           </div>
         </div>
-      ) : (
-        <p>No user data available</p>
-      )}
+        <div className="my-trips">
+          <h2>{t('profile.trips')}</h2>
+          <div className="trip-cards">
+            {topTrips.map((trip) => (
+              <Link key={trip.id} to={`/putovanja/${trip.id}`}>
+                <HighlightedTripCard trip={trip} />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
