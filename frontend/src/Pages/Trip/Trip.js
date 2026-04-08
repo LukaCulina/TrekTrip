@@ -141,31 +141,30 @@ const Trip = () => {
     return (
         <div className="trip-page">
             <h1>{trip.title}</h1>
-
+            <div className='trip-intro'>
+                <p><b>{t('trip.author')}:</b> {trip?.user?.username}</p>
+                <div className='trip-rating'>
+                    <Stack spacing={1}>
+                        <Rating
+                            className="rating"
+                            name="half-rating"
+                            value={averageRating}
+                            precision={0.1}
+                            size='large'
+                            onChange={handleRatingChange}
+                            readOnly={!activeUserId || hasRated || activeUserId === trip?.user?.id}
+                        />
+                    </Stack>
+                </div>
+            </div>
             <div className="main-image"
                 style={{ backgroundImage: `url(${trip && trip.images && trip.images.length > 0 ? process.env.PUBLIC_URL + trip.images[0].url : ''})` }}>
             </div>
 
             <div className="trip">
-                <div className='trip-intro'>
-                    <p><b>{t('trip.author')}:</b> {trip?.user?.username}</p>
-                    <div className='trip-rating'>
-                        <Stack spacing={1}>
-                            <Rating
-                                className="rating"
-                                name="half-rating"
-                                value={averageRating}
-                                precision={0.1}
-                                size='large'
-                                onChange={handleRatingChange}
-                                readOnly={!activeUserId || hasRated || activeUserId === trip?.user?.id}
-                            />
-                        </Stack>
-                    </div>
-                </div>
                 <div className='trip-body'>
                     <div className='trip-description'>
-                        <p className="intro-text">{trip.description}</p>
+                        <h2 className="intro-text">{trip.description}</h2>
                         <TripDays days={days} />
                     </div>
                     <div className="trip-details">
