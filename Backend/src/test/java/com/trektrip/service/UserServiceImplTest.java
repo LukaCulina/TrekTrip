@@ -83,7 +83,7 @@ class UserServiceImplTest {
     public void testUpdateUser() {
         Long id = 1L;
         Image image = new Image(1L, "url1");
-        Trip trip = new Trip(1L, "Naslov 1", "Opis 1", 3, true);
+        Trip trip = new Trip(1L, "Naslov 1", "Opis 1", 3);
         UserInfo user1 = new UserInfo(1L, "user1", "user1@mail.com", "pass1");
         UserInfo user2 = new UserInfo(2L, "user2", "user2@mail.com", "pass2", image,
                 "desc 1", List.of(new UserRole(1L, "USER")), List.of(trip));

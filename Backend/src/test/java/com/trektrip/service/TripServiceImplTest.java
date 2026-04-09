@@ -27,7 +27,7 @@ class TripServiceImplTest {
 
     @Test
     public void testCreateTrip() {
-        Trip trip = new Trip(1L, "Naslov 1", "Opis 1", 3, true);
+        Trip trip = new Trip(1L, "Naslov 1", "Opis 1", 3);
 
         when(tripRepository.save(Mockito.any(Trip.class))).thenReturn(trip);
 
@@ -39,8 +39,8 @@ class TripServiceImplTest {
 
     @Test
     public void testGetAllTrips() {
-        Trip trip1 = new Trip(1L, "Naslov 1", "Opis 1", 3, true);
-        Trip trip2 = new Trip(2L, "Naslov 2", "Opis 2", 5, false);
+        Trip trip1 = new Trip(1L, "Naslov 1", "Opis 1", 3);
+        Trip trip2 = new Trip(2L, "Naslov 2", "Opis 2", 5);
 
         List<Trip> allTrips = List.of(trip1, trip2);
 
@@ -52,7 +52,7 @@ class TripServiceImplTest {
     @Test
     public void testTripByIdExists() {
         Long id = 1L;
-        Trip trip = new Trip(1L, "Naslov 1", "Opis 1", 3, true);
+        Trip trip = new Trip(1L, "Naslov 1", "Opis 1", 3);
         when(tripRepository.findById(id)).thenReturn(Optional.of(trip));
 
         Optional<Trip> tripReturn = tripService.getTripById(id);
@@ -73,8 +73,8 @@ class TripServiceImplTest {
     @Test
     public void testUpdateTrip() {
         Long id = 1L;
-        Trip trip1 = new Trip(1L, "Naslov 1", "Opis 1", 3, true);
-        Trip trip2 = new Trip(2L, "Naslov 2", "Opis 2", 5, false);
+        Trip trip1 = new Trip(1L, "Naslov 1", "Opis 1", 3);
+        Trip trip2 = new Trip(2L, "Naslov 2", "Opis 2", 5);
 
         when(tripRepository.findById(id)).thenReturn(Optional.of(trip1));
         when(tripRepository.save(trip2)).thenReturn(trip2);
@@ -87,7 +87,7 @@ class TripServiceImplTest {
     @Test
     public void testUpdateTripIfDoesntExist() {
         Long id = 3L;
-        Trip trip2 = new Trip(2L, "Naslov 2", "Opis 2", 5, false);
+        Trip trip2 = new Trip(2L, "Naslov 2", "Opis 2", 5);
 
         Assertions.assertThrows(EntityNotFoundException.class, () -> {
             Trip updatedTrip = tripService.updateTrip(trip2, id);

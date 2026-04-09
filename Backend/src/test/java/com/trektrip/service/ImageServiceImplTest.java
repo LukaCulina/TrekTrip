@@ -74,7 +74,7 @@ class ImageServiceImplTest {
 
     @Test
     public void testAddImageToTripSuccessful() {
-        Trip trip1 = new Trip(1L, "Naslov 1", "Opis 1", 3, true, new ArrayList<>());
+        Trip trip1 = new Trip(1L, "Naslov 1", "Opis 1", 3, new ArrayList<>());
         Image image = new Image(1L, "url1");
 
         when(tripRepository.findById(1L)).thenReturn(Optional.of(trip1));

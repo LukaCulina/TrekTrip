@@ -38,7 +38,7 @@ class RatingServiceImplTest {
 
     @Test
     public void testCreateRating() {
-        Trip testTrip = new Trip(1L, "Trip 1", "Desc 1", 2, true);
+        Trip testTrip = new Trip(1L, "Trip 1", "Desc 1", 2);
         UserInfo testUser = new UserInfo(1L, "user1", "user1@mail.com", "pass1");
         Rating rating = new Rating(1L, testTrip, testUser,5);
 

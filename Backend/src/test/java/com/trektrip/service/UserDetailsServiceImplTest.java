@@ -34,7 +34,7 @@ class UserDetailsServiceImplTest {
     public void testLoadByUsername() {
         String username = "user";
         Image image = new Image(1L, "url1");
-        Trip trip = new Trip(1L, "Naslov 1", "Opis 1", 3, true);
+        Trip trip = new Trip(1L, "Naslov 1", "Opis 1", 3);
         UserInfo user = new UserInfo(1L, "user", "user@mail.com", "password", image,
                 "desc 1", List.of(new UserRole(1L, "USER")), List.of(trip));
 
