@@ -6,11 +6,11 @@
 .trip-page h1 {
   text-align: center;
   margin: 10px 0;
-  font-size: 6vh;
+  font-size: 4vh;
 }
 
 .main-image {
-  height: 600px;
+  height: 50vh;
   background-size: cover;
   background-position: center;
   border-radius: 12px;
