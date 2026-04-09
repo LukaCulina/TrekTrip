@@ -18,7 +18,7 @@ const TripComments = ({ trip, newComment, setNewComment, handleCommentSubmit, is
             {isLoggedIn && (
                 <div className="commentInputSection">
                     <textarea value={newComment} onChange={(e) => setNewComment(e.target.value)} />
-                    <button onClick={handleCommentSubmit}>Submit</button>
+                    <button className='submitComment' onClick={handleCommentSubmit}>Submit</button>
                 </div>
             )}
         </div>

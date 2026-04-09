@@ -1,5 +1,7 @@
 .comments-section {
-    margin: 0 auto;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 2px solid #e0e0e0;;
 }
 
 .comment {
@@ -34,6 +36,17 @@
 
 .singleCommentContainer p {
     padding: 0 10px;
+}
+
+.submitComment {
+    padding: 10px;
+    width: 200px;
+    margin: 20px auto;
+    background-color: #115fb4;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {

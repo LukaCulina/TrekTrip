@@ -124,7 +124,7 @@ const Trip = () => {
             // Refresh comments after adding new comment
             const response = await tripService.getTripById(id);
             setTrip(response.data);
-            setHasRated(true);
+            setNewComment('');
         } catch (error) {
             console.error('Error submitting comment:', error);
         }
@@ -164,15 +164,13 @@ const Trip = () => {
                     </div>
                 </div>
             </div>
-            <div className='comments'>
-                <TripComments
-                    trip={trip}
-                    newComment={newComment}
-                    setNewComment={setNewComment}
-                    handleCommentSubmit={handleCommentSubmit}
-                    isLoggedIn={isLoggedIn}
-                />
-            </div>
+            <TripComments
+                trip={trip}
+                newComment={newComment}
+                setNewComment={setNewComment}
+                handleCommentSubmit={handleCommentSubmit}
+                isLoggedIn={isLoggedIn}
+            />
         </div>
     );
 }
