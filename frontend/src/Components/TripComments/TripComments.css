@@ -35,3 +35,9 @@
 .singleCommentContainer p {
     padding: 0 10px;
 }
+
+@media (max-width: 768px) {
+    .singleCommentContainer{
+        width: 100%;
+    }
+}
