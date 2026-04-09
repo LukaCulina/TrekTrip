@@ -197,11 +197,6 @@ const AddTrip = () => {
     });
   };
 
-  const handleClearAll = () => {
-    setSelectedCountry('');
-    setSelectedLocations([]);
-  };
-
   const countryOptions = countries.map(c => ({
     value: c.name,
     label: c.name

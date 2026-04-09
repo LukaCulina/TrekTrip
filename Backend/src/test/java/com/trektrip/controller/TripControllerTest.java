@@ -67,8 +67,8 @@ class TripControllerTest {
 
     @BeforeEach
     public void init() {
-        trip1 = new Trip(1L, "Naslov 1", "Opis 1", 3, true);
-        trip2 = new Trip(2L, "Naslov 2", "Opis 2", 5, false);
+        trip1 = new Trip(1L, "Naslov 1", "Opis 1", 3);
+        trip2 = new Trip(2L, "Naslov 2", "Opis 2", 5);
     }
 
     @Test
