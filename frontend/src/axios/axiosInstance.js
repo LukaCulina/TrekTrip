@@ -7,7 +7,7 @@ let retryCounter = 0; // Initialize the retry counter+
 const refreshAccessToken = async () => {
 
   try {
-    const res = await axios.post('https://dark-ardis-lukaculina-bde5dd25.koyeb.app/auth/refreshToken', {
+    const res = await axios.post('https://trek-trip.koyeb.app/auth/refreshToken', {
       token: localStorage.getItem('authToken')
     });
     const accessToken = res.data.accessToken;
@@ -26,7 +26,7 @@ const refreshAccessToken = async () => {
 
 // Create Axios instance
 const axiosInstance = axios.create({
-  baseURL: 'https://dark-ardis-lukaculina-bde5dd25.koyeb.app/',
+  baseURL: 'https://trek-trip.koyeb.app/',
 });
 
 // Request interceptor to attach the token to the request
