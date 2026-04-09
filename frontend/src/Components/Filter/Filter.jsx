@@ -1,10 +1,11 @@
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
-const Filter = ({ label, value, onChange, options }) => {
+const Filter = ({ label, value, onChange, options, name }) => {
     return (
         <FormControl sx={{ minWidth: 180 }}>
             <InputLabel>{label}</InputLabel>
             <Select
+                name={name}
                 value={value}
                 onChange={onChange}
                 label={label}

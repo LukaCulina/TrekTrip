@@ -90,7 +90,7 @@
     "editButton": "Edit Profile"
   },
   "addTrip": {
-    "title": "Add New Trip",
+    "title": "Add a new trip",
     "name": "Title",
     "description": "Description",
     "length": "Duration in Days",

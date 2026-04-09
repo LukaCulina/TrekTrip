@@ -45,9 +45,9 @@
   text-align: left;
 }
 
-.auth-form input{
+.auth-form input, textarea{
   padding: 1.5rem;
-  font-size: 15px;
+  font-size: 16px;
   margin: 0.5rem 0;
   border-radius:15px;
   -webkit-border-radius:15px;

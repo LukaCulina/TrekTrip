@@ -90,7 +90,6 @@ class TripControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.title", CoreMatchers.is(trip1.getTitle())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.description", CoreMatchers.is(trip1.getDescription())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.lengthInDays", CoreMatchers.is(trip1.getLengthInDays())))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.public", CoreMatchers.is(trip1.isPublic())));
 
     }
 
@@ -122,7 +121,6 @@ class TripControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.title", CoreMatchers.is(trip1.getTitle())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.description", CoreMatchers.is(trip1.getDescription())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.lengthInDays", CoreMatchers.is(trip1.getLengthInDays())))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.public", CoreMatchers.is(trip1.isPublic())));
     }
 
     @Test
@@ -151,7 +149,6 @@ class TripControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.title", CoreMatchers.is(trip2.getTitle())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.description", CoreMatchers.is(trip2.getDescription())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.lengthInDays", CoreMatchers.is(trip2.getLengthInDays())))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.public", CoreMatchers.is(trip2.isPublic())));
     }
 
     @Test

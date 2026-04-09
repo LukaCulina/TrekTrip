@@ -62,22 +62,18 @@ public class Trip {
     @JsonManagedReference
     private List<Day> days = new ArrayList<>();
 
-    private boolean isPublic;
-
-    public Trip(Long id, String title, String description, int lengthInDays, boolean isPublic) {
+    public Trip(Long id, String title, String description, int lengthInDays) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.lengthInDays = lengthInDays;
-        this.isPublic = isPublic;
     }
 
-    public Trip(Long id, String title, String description, int lengthInDays, boolean isPublic, List<Image> images) {
+    public Trip(Long id, String title, String description, int lengthInDays, List<Image> images) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.lengthInDays = lengthInDays;
-        this.isPublic = isPublic;
         this.images = images;
     }
 

@@ -4,8 +4,8 @@ import { Helmet } from 'react-helmet';
 import tripService from '../../Services/tripService/tripService';
 import axiosInstance from '../../axios/axiosInstance';
 import { useTranslation } from 'react-i18next';
-import { MenuItem, Select, FormControl, InputLabel, Button } from '@mui/material';
 import countryService from '../../Services/countryService/countryService';
+import Filter from '../../Components/Filter/Filter';
 import './AddTrip.css';
 
 const AddTrip = () => {
@@ -23,7 +23,6 @@ const AddTrip = () => {
     lengthInDays: '',
     price: '',
     tripMonth: '',
-    isPublic: false,
     images: [],
   });
 
@@ -140,7 +139,6 @@ const AddTrip = () => {
           lengthInDays: formData.lengthInDays,
           price: formData.price,
           tripMonth: formData.tripMonth,
-          isPublic: formData.isPublic,
           user: { id: userId }
         },
         imageIds: imageIds,
@@ -185,8 +183,10 @@ const AddTrip = () => {
   };
 
   const handleLocationChange = (event) => {
-    setSelectedLocations(event.target.value);
-    console.log(days)
+    const {
+      target: { value },
+    } = event;
+    setSelectedLocations(typeof value === 'string' ? value.split(',') : value);
   };
 
   const handleDayChange = (index, field, value) => {
@@ -201,6 +201,16 @@ const AddTrip = () => {
     setSelectedCountry('');
     setSelectedLocations([]);
   };
+
+  const countryOptions = countries.map(c => ({
+    value: c.name,
+    label: c.name
+  }));
+
+  const monthOptions = months.map(month => ({
+    value: month,
+    label: month
+  }));
 
   return (
     <div className="auth-container">
@@ -248,46 +258,32 @@ const AddTrip = () => {
           {t('addTrip.price')}
           <input type="number" name="price" value={formData.price} onChange={handleChange} required />
         </label>
-        <FormControl variant="outlined" className="dropdown">
-          <InputLabel>{t('addTrip.month')}</InputLabel>
-          <Select name="tripMonth" value={formData.tripMonth} onChange={handleChange} required>
-            <MenuItem value="">{t('addTrip.chooseMonth')}</MenuItem>
-            {months.map((month, index) => (
-              <MenuItem key={index} value={month}>{month}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        <FormControl variant="outlined" className="dropdown">
-          <InputLabel>{t('addTrip.country')}</InputLabel>
-          <Select
-            value={selectedCountry}
-            onChange={handleCountryChange}
-            label="Country"
-          >
-            {countries.map((country) => (
-              <MenuItem key={country.id} value={country.name}>{country.name}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        {locations.length > 0 && (
-          <FormControl variant="outlined" className="dropdown">
-            <InputLabel>{t('addTrip.location')}</InputLabel>
-            <Select multiple value={selectedLocations} onChange={handleLocationChange} label="Location">
-              {locations.map((location) => (
-                <MenuItem key={location.id} value={location.name}>
-                  {location.name}
-                </MenuItem>
-              ))}
-            </Select>
-            <Button onClick={handleClearAll}>
-              {t('addTrip.clear')}
-            </Button>
-          </FormControl>
-        )}
-        <label>
-          Javno
-          <input type="checkbox" name="isPublic" checked={formData.isPublic} onChange={handleChange} />
-        </label>
+        <div className='choose'>
+          <Filter
+              label={t('addTrip.month')}
+              value={formData.tripMonth}
+              onChange={handleChange}
+              options={monthOptions}
+              name="tripMonth"
+          />
+          <Filter
+              label={t('addTrip.country')}
+              value={formData.tripCountry}
+              onChange={handleCountryChange}
+              options={countryOptions}
+              name="selectedCountry"
+          />
+          {locations.length > 0 && (
+            <Filter
+              label={t('addTrip.location')}
+              value={selectedLocations}
+              onChange={handleLocationChange}
+              options={locations.map(l => ({ value: l.name, label: l.name }))}
+              name="selectedLocations"
+              multiple={true}
+            />
+          )}
+        </div>
         <label>
           {t('addTrip.images')}
           <input type="file" name="images" onChange={handleChange} multiple />
